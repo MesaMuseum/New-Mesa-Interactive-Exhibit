@@ -4,6 +4,7 @@ import sideImageDefault from '../../assets/contentPage/Contents_Sidebar_Minimize
 import sideImageHover from '../../assets/contentPage/Contents_Sidebar_Expanded.png';
 import header from '../../assets/contentPage/header.png';
 import chapters from './chapters.json';
+import bookBackground from '../../assets/contentPage/Book_Page.png'
 
 const ContentPage = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -71,8 +72,27 @@ const ContentPage = () => {
         {/* Content Area (Book & Interaction - Side by Side) */}
         <div className="flex flex-1 h-[92%] overflow-hidden">
           
+
+
           {/* Book Div (Left - 50%) */}
-          <div className="w-[50%] h-full flex flex-row overflow-hidden">
+{/* Book Div (Left - 50%) */}
+<div 
+            className="w-[50%] h-full flex flex-row overflow-hidden relative"
+            style={{ 
+              position: 'relative'
+            }}
+          >
+            {/* Background Image Container */}
+            <div 
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundImage: `url(${bookBackground})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100%',
+                height: '100%'
+              }}
+            />
 
             {/* Left Page */}
             <div className="w-1/2 h-full bg-yellow-200 flex flex-col p-4 border-r-2 border-yellow-600 overflow-y-auto">
