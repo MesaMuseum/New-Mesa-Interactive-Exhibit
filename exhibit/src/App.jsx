@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import StartingPage from "./pages/StartingPage";
-import RoomPage from "./pages/RoomPage"; 
+import StartingPage from "./pages/StartingPage/StartingPage";
+import RoomPage from "./pages/RoomPage/RoomPage"; 
 import './index.css';
 
 // import Flipbook from "./objects/Flipbook"; 
