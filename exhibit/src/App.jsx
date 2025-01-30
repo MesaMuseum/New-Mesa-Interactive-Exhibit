@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import StartingPage from "./pages/StartingPage";
-// import RoomPage from "./roompage"; 
+import RoomPage from "./pages/RoomPage"; 
+import './index.css';
+
 // import Flipbook from "./objects/Flipbook"; 
 
 function App() {
@@ -9,6 +11,7 @@ function App() {
     <Router> 
       <Routes>
         <Route path="/" element={<StartingPage />} />
+        <Route path="/room" element={<RoomPage />} />
       </Routes>
     </Router>
   );
