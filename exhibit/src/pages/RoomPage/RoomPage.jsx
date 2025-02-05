@@ -127,7 +127,7 @@ function RoomPage() {
   const handleBookClick = () => {
     setFadeOut(true);
     setTimeout(() => {
-      navigate('/flipbook');
+      navigate('/content');
     }, 2700); 
   };
 
