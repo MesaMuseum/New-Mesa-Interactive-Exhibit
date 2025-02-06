@@ -4,7 +4,7 @@ import sideImageDefault from '../../assets/contentPage/Contents_Sidebar_Minimize
 import sideImageHover from '../../assets/contentPage/Contents_Sidebar_Expanded.png';
 import header from '../../assets/contentPage/header.png';
 import chapters from './chapters.json';
-import bookBackground from '../../assets/contentPage/Book_Page.png'
+import bookBackground from '../../assets/contentPage/Book_Page.png';
 
 const ContentPage = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -13,28 +13,50 @@ const ContentPage = () => {
   return (
     <div 
       className="w-screen h-screen flex bg-cover bg-center overflow-hidden" 
-      style={{ 
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: '100% 100%',
-        backgroundRepeat: 'no-repeat'
-      }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      {/* Sidebar */}
+      {/* Main Content */}
+      <div className={`h-full flex flex-col flex-grow transition-all duration-500 overflow-hidden ${isSidebarExpanded ? 'pr-[15%]' : 'pr-[5%]'}`}> 
+        
+        {/* Header */}
+        <div className="w-[70%] h-[15%] flex items-center justify-center relative">
+          <img src={header} alt="Page Header" className="absolute inset-0 w-full h-full object-cover" />
+          <h1 className="absolute text-black font-bold tracking-wide">People & Places</h1>
+        </div>
+
+        {/* Book & Interaction */}
+        <div className="flex flex-1 items-center justify-center gap-8 px-6">
+          {/* Book Content */}
+          <div className="relative w-[45%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg p-6" style={{ backgroundImage: `url(${bookBackground})` }}>
+            <h2 className="text-lg font-serif font-bold mb-3 text-center">{selectedChapter?.title_left_page || "Select a Chapter"}</h2>
+            <p className="text-sm leading-relaxed">{selectedChapter?.left_page_content || "No content available."}</p>
+          </div>
+          
+          {/* Video Section */}
+          <div className="w-[45%] h-[90%] flex flex-col items-center bg-white shadow-lg rounded-lg p-4">
+            <h2 className="text-lg font-semibold text-gray-700 mb-3">Interactive Content</h2>
+            <video className="w-full h-auto rounded-lg shadow-md" controls>
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
+      {/* Sidebar (Right) */}
       <div 
-        className={`h-full transition-all duration-500 bg-no-repeat bg-cover cursor-pointer overflow-hidden ${
-          isSidebarExpanded ? 'w-[18%]' : 'w-[10%]'
-        }`}
+        className={`h-full transition-all duration-500 bg-no-repeat bg-cover cursor-pointer flex items-center justify-center ${isSidebarExpanded ? 'w-[20%]' : 'w-[10%]'}`}
         style={{ backgroundImage: `url(${isSidebarExpanded ? sideImageHover : sideImageDefault})` }}
         onClick={() => setIsSidebarExpanded(!isSidebarExpanded)}
       >
         {isSidebarExpanded ? (
-          <div className="h-full flex flex-col items-start text-black pt-4 pl-6 overflow-y-auto">
-            <h3 className="font-extrabold mb-4 text-2xl">Navigate</h3>
-            <ul className="text-lg list-none space-y-4">
+          <div className="h-full flex flex-col text-black pt-6 px-4 overflow-y-auto">
+            <h3 className="text-lg font-bold mb-4">Navigate</h3>
+            <ul className="space-y-3 text-base">
               {chapters.map((chapter, index) => (
                 <li 
                   key={index} 
-                  className="hover:underline cursor-pointer"
+                  className="cursor-pointer hover:text-blue-600"
                   onClick={() => setSelectedChapter(chapter)}
                 >
                   {chapter.title_left_page}
@@ -43,89 +65,8 @@ const ContentPage = () => {
             </ul>
           </div>
         ) : (
-          <div className="h-full flex flex-col justify-center text-black transform -rotate-90 ml-6">
-            <span className="text-xl font-extrabold tracking-widest">Contents</span>
-          </div>
+          <div className="text-lg font-bold transform rotate-90 text-black">Contents</div>
         )}
-      </div>
-
-      {/* Main Content */}
-      <div className={`h-full flex flex-col transition-all duration-500 overflow-hidden ${
-        isSidebarExpanded ? 'w-[82%]' : 'w-[90%]'
-      }`}>
-        
-        {/* Top Bar */}
-        <div className="w-full h-[8%] flex items-center justify-center relative overflow-hidden">
-          <img 
-            src={header} 
-            alt="Page Header" 
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <h1 
-            className="absolute text-black text-2xl font-bold"
-            style={{ top: '50%', left: '40%', transform: 'translate(-50%, -50%)' }}
-          >
-            People&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Places
-          </h1>
-        </div>
-
-        {/* Content Area (Book & Interaction - Side by Side) */}
-        <div className="flex flex-1 h-[92%] overflow-hidden">
-          
-
-
-          {/* Book Div (Left - 50%) */}
-{/* Book Div (Left - 50%) */}
-<div 
-            className="w-[50%] h-full flex flex-row overflow-hidden relative"
-            style={{ 
-              position: 'relative'
-            }}
-          >
-            {/* Background Image Container */}
-            <div 
-              className="absolute inset-0 z-0"
-              style={{
-                backgroundImage: `url(${bookBackground})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                width: '100%',
-                height: '100%'
-              }}
-            />
-
-            {/* Left Page */}
-            <div className="w-1/2 h-full bg-yellow-200 flex flex-col p-4 border-r-2 border-yellow-600 overflow-y-auto">
-              <h2 className="text-2xl font-serif mb-2">{selectedChapter?.title_left_page || "Select a Chapter"}</h2>
-              {selectedChapter?.left_page_image && (
-                <img src={selectedChapter.left_page_image} alt="Left Page" className="w-full h-40 object-cover my-2"/>
-              )}
-              <p className="text-sm">{selectedChapter?.left_page_content || "No content available."}</p>
-            </div>
-
-            {/* Right Page */}
-            <div className="w-1/2 h-full bg-yellow-100 flex flex-col p-4 overflow-y-auto">
-              <h2 className="text-2xl font-serif mb-2">{selectedChapter?.title_right_page || "Select a Chapter"}</h2>
-              {selectedChapter?.right_page_image && (
-                <img src={selectedChapter.right_page_image} alt="Right Page" className="w-full h-40 object-cover my-2"/>
-              )}
-              <p className="text-sm">{selectedChapter?.right_page_content || "No content available."}</p>
-            </div>
-
-          </div>
-
-          {/* Interaction Div (Right - 50%) */}
-          <div className="w-[50%] h-full bg-gray-100 flex items-center justify-center overflow-hidden">
-            <p className="text-xl text-gray-600">[Interactive Content Placeholder]</p>
-            <div>
-            <video className="w-full h-full object-cover" controls>
-            <source src="/temp.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          </div>
-          </div>
-
-        </div>
       </div>
     </div>
   );
