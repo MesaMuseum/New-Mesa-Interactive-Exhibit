@@ -127,7 +127,7 @@ function RoomPage() {
   const handleBookClick = () => {
     setFadeOut(true);
     setTimeout(() => {
-      navigate('/content');
+      navigate('/places');
     }, 2700); 
   };
 

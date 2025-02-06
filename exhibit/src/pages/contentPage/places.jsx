@@ -3,7 +3,7 @@ import backgroundImage from '../../assets/contentPage/Desk_Background.png';
 import sideImageDefault from '../../assets/contentPage/Contents_Sidebar_Minimized.png';
 import sideImageHover from '../../assets/contentPage/Contents_Sidebar_Expanded.png';
 import header from '../../assets/contentPage/header.png';
-import chapters from './chapters.json';
+import chapters from './places.json';
 import bookBackground from '../../assets/contentPage/Book_Page.png';
 
 const ContentPage = () => {
@@ -19,10 +19,13 @@ const ContentPage = () => {
       <div className={`h-full flex flex-col flex-grow transition-all duration-500 overflow-hidden ${isSidebarExpanded ? 'pr-[15%]' : 'pr-[5%]'}`}> 
         
         {/* Header */}
-        <div className="w-[70%] h-[15%] flex items-center justify-center relative">
-          <img src={header} alt="Page Header" className="absolute inset-0 w-full h-full object-cover" />
-          <h1 className="absolute text-black font-bold tracking-wide">People & Places</h1>
-        </div>
+        <div className="w-[50%] h-[15%] flex items-center justify-center relative">
+           <img src={header} alt="Page Header" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute flex space-x-30 text-black font-bold tracking-wide text-2xl left-15 top-1/7">
+              <a href="/people" className="!text-black">People</a>
+              <a href="/places" className="!text-black">Places</a>
+            </div>
+          </div>
 
         {/* Book & Interaction */}
         <div className="flex flex-1 items-center justify-center gap-8 px-6">
@@ -36,7 +39,7 @@ const ContentPage = () => {
           <div className="w-[45%] h-[90%] flex flex-col items-center bg-white shadow-lg rounded-lg p-4">
             <h2 className="text-lg font-semibold text-gray-700 mb-3">Interactive Content</h2>
             <video className="w-full h-auto rounded-lg shadow-md" controls>
-              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+              <source src="/temp.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
