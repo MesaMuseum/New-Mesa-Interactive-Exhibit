@@ -84,7 +84,7 @@ const ContentPage = () => {
         >
           {isSidebarExpanded ? (
             <div 
-              className="h-full flex flex-col text-black pt-16 pl-12 overflow-y-auto" // Changed px-8 to pl-8
+              className="h-full flex flex-col text-black pt-16 pl-12 overflow-y-auto"
               onClick={e => e.stopPropagation()}
             >
               <h3 className="text-lg font-bold mb-4">Navigate</h3>
