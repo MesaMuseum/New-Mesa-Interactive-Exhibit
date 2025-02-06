@@ -101,7 +101,7 @@ const ContentPage = () => {
               </ul>
             </div>
           ) : (
-            <div className="h-full flex items-center justify-center pt-16"> 
+            <div className="h-full flex items-center justify-center pt-16 pl-4"> 
               <div className="text-lg font-bold transform rotate-90 text-black">Contents</div>
             </div>
           )}
