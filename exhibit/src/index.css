@@ -63,6 +63,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Add these new styles */
+.sidebar-overlay {
+  transition: all 0.3s ease-in-out;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure content below sidebar is accessible */
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
