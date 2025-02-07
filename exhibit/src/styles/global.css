@@ -1,0 +1,12 @@
+:root {
+  --font-imfell: 'IMFellDWPica', serif;
+  --font-lovers: 'LoversQuarrel', cursive;
+}
+
+.font-imfell {
+  font-family: var(--font-imfell);
+}
+
+.font-lovers {
+  font-family: var(--font-lovers) !important;
+}

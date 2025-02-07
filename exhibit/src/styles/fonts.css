@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'IMFellDWPica';
+  src: local('IMFellDWPica-Regular'),
+       url('../assets/fonts/IMFellDWPica-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LoversQuarrel';
+  src: local('LoversQuarrel'),
+       url('../assets/fonts/LoversQuarrel-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+

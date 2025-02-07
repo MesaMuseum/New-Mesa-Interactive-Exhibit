@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useLocation } from 'react-router-dom';
 import backgroundImage from '../../assets/contentPage/Desk_Background.png'; 
 import sideImageDefault from '../../assets/contentPage/Contents_Sidebar_Minimized.png';
 import sideImageHover from '../../assets/contentPage/Contents_Sidebar_Expanded.png';
@@ -10,6 +11,8 @@ const PlacesPage = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(chapters[0]);
   const sidebarRef = useRef(null);
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -36,33 +39,109 @@ const PlacesPage = () => {
       >
         <div className="h-full flex flex-col flex-grow overflow-hidden"> 
           {/* Header */}
-          <div className="w-[50%] h-[15%] flex items-center justify-center relative">
-            <img src={header} alt="Page Header" className="absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute flex space-x-30 text-black font-bold tracking-wide text-2xl left-15 top-1/7">
-              <a href="/people" className="!text-black">People</a>
-              <a href="/places" className="!text-black">Places</a>
+          <div 
+            className="w-[50%] h-[15%] flex items-center justify-center relative"
+            style={{ 
+              backgroundImage: `url(${header})`,
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          >
+            <div className="w-full flex justify-between pb-4 px-24 pr-48">
+              <a 
+                href="/people" 
+                className={`font-lovers text-black no-underline font-extrabold text-5xl hover:scale-105 transition-transform relative
+                  ${currentPath === '/people' ? `
+                    after:content-[""] 
+                    after:absolute 
+                    after:w-[220%] 
+                    after:h-[140%] 
+                    after:border-4 
+                    after:border-red-500/70
+                    after:rounded-full 
+                    after:-left-[50%] 
+                    after:-top-[30%]
+                    after:backdrop-filter
+                    after:backdrop-contrast-125
+                    after:mix-blend-multiply
+                    after:animate-pulse
+                    after:shadow-[0_0_10px_rgba(239,68,68,0.5)]
+                    after:bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.1)_1px,transparent_1px)] 
+                    after:bg-[length:4px_4px]
+                    after:[filter:url(#grainy)]` : ''}`}
+              >
+                People
+              </a>
+              <a 
+                href="/places" 
+                className={`font-lovers text-black no-underline font-extrabold text-5xl hover:scale-105 transition-transform relative
+                  ${currentPath === '/places' ? `
+                    after:content-[""] 
+                    after:absolute 
+                    after:w-[220%] 
+                    after:h-[140%] 
+                    after:border-4 
+                    after:border-red-500/70
+                    after:rounded-full 
+                    after:-left-[50%] 
+                    after:-top-[30%]
+                    after:backdrop-filter
+                    after:backdrop-contrast-125
+                    after:mix-blend-multiply
+                    after:animate-pulse
+                    after:shadow-[0_0_10px_rgba(239,68,68,0.5)]
+                    after:bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.1)_1px,transparent_1px)] 
+                    after:bg-[length:4px_4px]
+                    after:[filter:url(#grainy)]` : ''}`}
+              >
+                Places
+              </a>
             </div>
           </div>
 
           {/* Book & Interaction Section */}
-          <div className="flex flex-1 items-center justify-center gap-8 px-6">
+          <div className="flex flex-1 items-center justify-center gap-8 px-6 pr-24">
             {/* Book Content */}
-            <div className="relative w-[45%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg p-6" 
+            <div className="relative w-[80%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
-              <h2 className="text-lg font-serif font-bold mb-3 text-center">
-                {selectedChapter?.title_left_page || "Select a Chapter"}
-              </h2>
-              <p className="text-sm leading-relaxed">
-                {selectedChapter?.left_page_content || "No content available."}
-              </p>
+              
+              {/* Book Pages Container */}
+              <div className="flex flex-row justify-between px-8 h-full pb-8">
+                {/* Left Page */}
+                <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
+                  <h3 className="text-3xl font-lovers font-bold text-black mb-4">
+                    {selectedChapter?.title_left_page}
+                  </h3>
+                  <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
+                    {/* Placeholder for left page image */}
+                  </div>
+                  <p className="text-base font-imfell text-black font-medium leading-relaxed">
+                    {selectedChapter?.left_page_content}
+                  </p>
+                </div>
+
+                {/* Right Page */}
+                <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
+                  <h3 className="text-3xl font-lovers font-bold text-black mb-4">
+                    {selectedChapter?.title_right_page}
+                  </h3>
+                  <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
+                    {/* Placeholder for right page image */}
+                  </div>
+                  <p className="text-base font-imfell text-black font-medium leading-relaxed">
+                    {selectedChapter?.right_page_content}
+                  </p>
+                </div>
+              </div>
             </div>
             
             {/* Video Section */}
-            <div className="w-[45%] h-[90%] flex flex-col items-center bg-white shadow-lg rounded-lg p-4">
-              <h2 className="text-lg font-semibold text-gray-700 mb-3">Interactive Content</h2>
+            <div className="w-[45%] h-[90%] flex flex-col items-center shadow-lg rounded-lg p-4">
+              <h2 className="text-4xl font-lovers font-extrabold text-white-800 mb-3">Interactive Content</h2>
               <video className="w-full h-auto rounded-lg shadow-md" controls>
                 <source src="/temp.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
+                <p className="font-imfell">Your browser does not support the video tag.</p>
               </video>
             </div>
           </div>
@@ -88,8 +167,8 @@ const PlacesPage = () => {
               className="h-full flex flex-col text-black pt-16 pl-12 overflow-y-auto"
               onClick={e => e.stopPropagation()}
             >
-              <h3 className="text-lg font-bold mb-4">Navigate</h3>
-              <ul className="space-y-3 text-base">
+              <h3 className="text-4xl font-lovers font-extrabold !important mb-4">Navigate</h3>
+              <ul className="space-y-3 text-base font-imfell">
                 {chapters.map((chapter, index) => (
                   <li 
                     key={index} 
@@ -103,11 +182,18 @@ const PlacesPage = () => {
             </div>
           ) : (
             <div className="h-full flex items-center justify-center pt-16">
-              <div className="text-lg font-bold transform rotate-90 text-black">Contents</div>
+              <div className="text-3xl font-lovers font-extrabold transform rotate-90 text-black">Contents</div>
             </div>
           )}
         </div>
       </div>
+      {/* Add SVG filter for grainy effect */}
+      <svg className="hidden">
+        <filter id="grainy">
+          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" />
+          <feDisplacementMap in="SourceGraphic" scale="10" />
+        </filter>
+      </svg>
     </div>
   );
 };

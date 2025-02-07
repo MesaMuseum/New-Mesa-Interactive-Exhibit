@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import slide1 from '../../assets/StartingPage/slide1.JPG';
 import slide2 from '../../assets/StartingPage/slide2.JPG';
