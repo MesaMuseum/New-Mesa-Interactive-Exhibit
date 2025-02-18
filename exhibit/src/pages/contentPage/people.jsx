@@ -13,7 +13,8 @@ const ContentPage = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(chapters[0]); // Default to first chapter
   const sidebarRef = useRef(null);
-
+  const [index, setIndex] = useState(0);
+    
   // Handle clicks outside sidebar
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -30,6 +31,20 @@ const ContentPage = () => {
   const toggleSidebar = (e) => {
     e.stopPropagation();
     setIsSidebarExpanded(!isSidebarExpanded);
+  };
+
+  const goToPreviousChapter = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+      setSelectedChapter(chapters[index - 1]);
+    }
+  };
+
+  const goToNextChapter = () => {
+    if (index < chapters.length - 1) {
+      setIndex(index + 1);
+      setSelectedChapter(chapters[index + 1]);
+    }
   };
 
   return (
@@ -107,7 +122,7 @@ const ContentPage = () => {
           {/* Book & Interaction */}
           <div className="flex flex-1 items-center justify-center gap-8 px-6 pr-24">
             {/* Book Content */}
-            <div className="relative w-[80%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
+            <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
@@ -123,6 +138,7 @@ const ContentPage = () => {
                   <p className="text-base font-imfell text-black font-medium leading-relaxed">
                     {selectedChapter?.left_page_content}
                   </p>
+                  
                 </div>
 
                 {/* Right Page */}
@@ -136,6 +152,24 @@ const ContentPage = () => {
                   <p className="text-base font-imfell text-black font-medium leading-relaxed">
                     {selectedChapter?.right_page_content}
                   </p>
+                </div>
+                <div className="absolute bottom-5 left-6 text-xs">
+                  <button 
+                    onClick={goToPreviousChapter}
+                    disabled={index === 0}
+                    className="bg-black text-white rounded-full disabled:opacity-50"
+                  >
+                    Previous
+                  </button>
+                </div>
+                <div className="absolute bottom-5 right-6 text-xs">
+                  <button 
+                    onClick={goToNextChapter}
+                    disabled={index === chapters.length - 1}
+                    className="bg-black text-white rounded-full disabled:opacity-50"
+                  >
+                    Next
+                  </button>
                 </div>
               </div>
             </div>
@@ -151,6 +185,8 @@ const ContentPage = () => {
           </div>
         </div>
       </div>
+
+      
 
       {/* Sticky Sidebar */}
       <div 

@@ -103,7 +103,7 @@ const PlacesPage = () => {
           {/* Book & Interaction Section */}
           <div className="flex flex-1 items-center justify-center gap-8 px-6 pr-24">
             {/* Book Content */}
-            <div className="relative w-[80%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
+            <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
@@ -126,12 +126,13 @@ const PlacesPage = () => {
                   <h3 className="text-3xl font-lovers font-bold text-black mb-4">
                     {selectedChapter?.title_right_page}
                   </h3>
-                  <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
-                    {/* Placeholder for right page image */}
-                  </div>
+            
                   <p className="text-base font-imfell text-black font-medium leading-relaxed">
                     {selectedChapter?.right_page_content}
                   </p>
+                  <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
+                    {/* Placeholder for right page image */}
+                  </div>
                 </div>
               </div>
             </div>
