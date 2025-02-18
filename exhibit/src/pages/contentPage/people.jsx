@@ -153,6 +153,8 @@ const ContentPage = () => {
                     {selectedChapter?.right_page_content}
                   </p>
                 </div>
+                
+                {/* Previous and Next Buttons*/}
                 <div className="absolute bottom-5 left-6 text-xs">
                   <button 
                     onClick={goToPreviousChapter}
