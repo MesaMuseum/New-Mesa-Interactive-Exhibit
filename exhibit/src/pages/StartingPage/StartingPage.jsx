@@ -6,23 +6,29 @@ import slide2 from '../../assets/StartingPage/slide2.JPG';
 function StartingPage() {
   const [fadeOut, setFadeOut] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
   const navigate = useNavigate();
 
   const images = [slide1, slide2];
 
-  // Cycle through images every 3 seconds
+  
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setIsFading(true); // Start fade-out effect
+
+      setTimeout(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setIsFading(false); // Start fade-in effect
+      }, 1000); // Fade duration
     }, 3000);
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, [images.length]);
+  }, []);
 
   const handleScreenClick = () => {
     setFadeOut(true); // Trigger the fade-out effect
 
-    // Navigate to the next page after 3 seconds
+    // Navigate to the next page after 1 second
     setTimeout(() => {
       navigate('./room');
     }, 1000);
@@ -31,20 +37,32 @@ function StartingPage() {
   return (
     <div
       onClick={handleScreenClick}
-      className={`absolute top-0 left-0 w-full h-full flex items-center justify-center transition-colors duration-[3000ms] ${
-        fadeOut ? 'bg-white' : ''
-      }`}
+      className="absolute top-0 left-0 w-full h-full flex items-center justify-center cursor-pointer"
       style={{
         zIndex: 10,
-        cursor: 'pointer',
-        backgroundImage: fadeOut ? '' : `url(${images[currentImageIndex]})`, // Remove the slideshow on fade-out
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        transition: 'background-image 1s ease-in-out', // Smooth transition for slideshow
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      {/* Background Slideshow with Stacked Fade Transition */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        {images.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute top-0 left-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url(${img})`,
+              transition: 'opacity 1s ease-in-out',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Overlay Text */}
       <h1
-        className={`text-8xl font-Cormorant text-white drop-shadow transition-opacity duration-[2000ms] ${
+        className={`absolute text-8xl font-Cormorant text-white drop-shadow transition-opacity duration-[2000ms] ${
           fadeOut ? 'opacity-0' : 'opacity-100'
         }`}
       >
