@@ -11,7 +11,7 @@ const ContentPage = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
-  const [selectedChapter, setSelectedChapter] = useState(chapters[0]); // Default to first chapter
+  const [selectedChapter, setSelectedChapter] = useState(chapters[0]); 
   const sidebarRef = useRef(null);
   const [index, setIndex] = useState(0);
     
@@ -45,6 +45,11 @@ const ContentPage = () => {
       setIndex(index + 1);
       setSelectedChapter(chapters[index + 1]);
     }
+  };
+
+  const handleClick = (selectedIndex, selectedChapter) => { // Updates index and selected chapter when user clicks on name from sidebar
+    setIndex(selectedIndex);
+    setSelectedChapter(selectedChapter);
   };
 
   return (
@@ -156,22 +161,10 @@ const ContentPage = () => {
                 
                 {/* Previous and Next Buttons*/}
                 <div className="absolute bottom-5 left-6 text-xs">
-                  <button 
-                    onClick={goToPreviousChapter}
-                    disabled={index === 0}
-                    className="bg-black text-white rounded-full disabled:opacity-50"
-                  >
-                    Previous
-                  </button>
+                  <img src="/prev_icon.png" onClick={goToPreviousChapter} className={`w-[30px] h-[30px] ${index === 0 ? 'opacity-50' : ''}`} ></img>
                 </div>
-                <div className="absolute bottom-5 right-6 text-xs">
-                  <button 
-                    onClick={goToNextChapter}
-                    disabled={index === chapters.length - 1}
-                    className="bg-black text-white rounded-full disabled:opacity-50"
-                  >
-                    Next
-                  </button>
+                <div className="absolute bottom-6 right-6 text-xs">
+                  <img src="/next_icon.png" onClick={goToNextChapter} className={`w-[30px] h-[30px] ${index === chapters.length - 1 ? 'opacity-50' : ''}`} ></img>
                 </div>
               </div>
             </div>
@@ -215,7 +208,7 @@ const ContentPage = () => {
                   <li 
                     key={index} 
                     className="cursor-pointer hover:text-blue-600"
-                    onClick={() => setSelectedChapter(chapter)}
+                    onClick={() => handleClick(index, chapter)}
                   >
                     {chapter.title_left_page}
                   </li>

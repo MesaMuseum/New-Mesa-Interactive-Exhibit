@@ -8,11 +8,26 @@ import chapters from './places.json';
 import bookBackground from '../../assets/contentPage/Book_Page.png';
 
 const PlacesPage = () => {
-  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
-  const [selectedChapter, setSelectedChapter] = useState(chapters[0]);
-  const sidebarRef = useRef(null);
   const location = useLocation();
   const currentPath = location.pathname;
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
+  const [selectedChapter, setSelectedChapter] = useState(chapters[0]); 
+  const sidebarRef = useRef(null);
+  const [index, setIndex] = useState(0);
+
+  const goToPreviousChapter = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+      setSelectedChapter(chapters[index - 1]);
+    }
+  };
+
+  const goToNextChapter = () => {
+    if (index < chapters.length - 1) {
+      setIndex(index + 1);
+      setSelectedChapter(chapters[index + 1]);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -28,6 +43,11 @@ const PlacesPage = () => {
   const toggleSidebar = (e) => {
     e.stopPropagation();
     setIsSidebarExpanded(!isSidebarExpanded);
+  };
+
+  const handleClick = (selectedIndex, selectedChapter) => { // Updates index and selected chapter when user clicks on name from sidebar
+    setIndex(selectedIndex);
+    setSelectedChapter(selectedChapter);
   };
 
   return (
@@ -134,6 +154,13 @@ const PlacesPage = () => {
                     {/* Placeholder for right page image */}
                   </div>
                 </div>
+                {/* Previous and Next Buttons*/}
+                <div className="absolute bottom-5 left-6 text-xs">
+                  <img src="/prev_icon.png" onClick={goToPreviousChapter} className={`w-[30px] h-[30px] ${index === 0 ? 'opacity-50' : ''}`} ></img>
+                </div>
+                <div className="absolute bottom-6 right-6 text-xs">
+                  <img src="/next_icon.png" onClick={goToNextChapter} className={`w-[30px] h-[30px] ${index === chapters.length - 1 ? 'opacity-50' : ''}`} ></img>
+                </div>
               </div>
             </div>
             
@@ -146,6 +173,7 @@ const PlacesPage = () => {
               </video>
             </div>
           </div>
+          
         </div>
       </div>
 
@@ -174,7 +202,7 @@ const PlacesPage = () => {
                   <li 
                     key={index} 
                     className="cursor-pointer hover:text-blue-600"
-                    onClick={() => setSelectedChapter(chapter)}
+                    onClick={() => handleClick(index, chapter)}
                   >
                     {chapter.title_left_page}
                   </li>
