@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from 'react-router-dom';
-import backgroundImage from '../../assets/contentPage/Desk_Background.png'; 
-import sideImageDefault from '../../assets/contentPage/Contents_Sidebar_Minimized.png';
-import sideImageHover from '../../assets/contentPage/Contents_Sidebar_Expanded.png';
-import header from '../../assets/contentPage/header.png';
+import backgroundImage from '/contentPage/Desk_Background.png?url'; 
+import sideImageDefault from '/contentPage/Contents_Sidebar_Minimized.png?url';
+import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
+import header from '/contentPage/header.png?url';
 import chapters from './places.json';
-import bookBackground from '../../assets/contentPage/Book_Page.png';
+import bookBackground from '/contentPage/Book_Page.png?url';
 
 const PlacesPage = () => {
   const location = useLocation();

@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from 'react-router-dom';
-import backgroundImage from '../../assets/contentPage/Desk_Background.png'; 
-import sideImageDefault from '../../assets/contentPage/Contents_Sidebar_Minimized.png';
-import sideImageHover from '../../assets/contentPage/Contents_Sidebar_Expanded.png';
-import header from '../../assets/contentPage/header.png';
+import backgroundImage from '/contentPage/Desk_Background.png?url'; 
+import sideImageDefault from '/contentPage/Contents_Sidebar_Minimized.png?url';
+import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
+import header from '/contentPage/header.png?url';
 import chapters from './chapters.json';
-import bookBackground from '../../assets/contentPage/Book_Page.png';
+import bookBackground from '/contentPage/Book_Page.png?url'
+import Typed from "typed.js";
 
 const ContentPage = () => {
   const location = useLocation();
@@ -14,6 +15,12 @@ const ContentPage = () => {
   const [selectedChapter, setSelectedChapter] = useState(chapters[0]); 
   const sidebarRef = useRef(null);
   const [index, setIndex] = useState(0);
+
+  // Refs for the typing animation
+  const leftHeaderRef = useRef(null);
+  const rightHeaderRef = useRef(null);
+  const leftContentRef = useRef(null);
+  const rightContentRef = useRef(null);
     
   // Handle clicks outside sidebar
   useEffect(() => {
@@ -26,6 +33,48 @@ const ContentPage = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Typing animation for title and content
+  useEffect(() => {
+    if (leftHeaderRef.current && rightHeaderRef.current && leftContentRef.current && rightContentRef.current) {
+      // Destroy previous Typed instances if they exist
+      leftHeaderRef.current.innerHTML = "";
+      rightHeaderRef.current.innerHTML = "";
+      leftContentRef.current.innerHTML = "";
+      rightContentRef.current.innerHTML = "";
+
+      const typedLeftHeader = new Typed(leftHeaderRef.current, {
+        strings: [selectedChapter?.title_left_page || ""],
+        typeSpeed: 50,
+        showCursor: false,
+      });
+
+      const typedRightHeader = new Typed(rightHeaderRef.current, {
+        strings: [selectedChapter?.title_right_page || ""],
+        typeSpeed: 50,
+        showCursor: false,
+      });
+
+      const typedLeftContent = new Typed(leftContentRef.current, {
+        strings: [selectedChapter?.left_page_content || ""],
+        typeSpeed: 20,
+        showCursor: false,
+      });
+
+      const typedRightContent = new Typed(rightContentRef.current, {
+        strings: [selectedChapter?.right_page_content || ""],
+        typeSpeed: 20,
+        showCursor: false,
+      });
+
+      return () => {
+        typedLeftHeader.destroy();
+        typedRightHeader.destroy();
+        typedLeftContent.destroy();
+        typedRightContent.destroy();
+      };
+    }
+  }, [selectedChapter]);
 
   // Toggle sidebar
   const toggleSidebar = (e) => {
@@ -133,30 +182,21 @@ const ContentPage = () => {
               {/* Book Pages Container */}
               <div className="flex flex-row justify-between px-8 h-full pb-8">
                 {/* Left Page */}
-                <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
-                  <h3 className="text-3xl font-lovers font-bold text-black mb-4">
-                    {selectedChapter?.title_left_page}
-                  </h3>
+                 <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
+                  <h3 ref={leftHeaderRef} className="text-3xl font-lovers font-bold text-black mb-4"></h3>
                   <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
                     {/* Placeholder for left page image */}
                   </div>
-                  <p className="text-base font-imfell text-black font-medium leading-relaxed">
-                    {selectedChapter?.left_page_content}
-                  </p>
-                  
+                  <p ref={leftContentRef} className="text-base font-imfell text-black font-medium leading-relaxed"></p>
                 </div>
 
                 {/* Right Page */}
                 <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
-                  <h3 className="text-3xl font-lovers font-bold text-black mb-4">
-                    {selectedChapter?.title_right_page}
-                  </h3>
+                  <h3 ref={rightHeaderRef} className="text-3xl font-lovers font-bold text-black mb-4"></h3>
                   <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
-                    {/* Placeholder for right page image */}
+                    {/* Placeholder for left page image */}
                   </div>
-                  <p className="text-base font-imfell text-black font-medium leading-relaxed">
-                    {selectedChapter?.right_page_content}
-                  </p>
+                  <p ref={rightContentRef} className="text-base font-imfell text-black font-medium leading-relaxed"></p>
                 </div>
                 
                 {/* Previous and Next Buttons*/}

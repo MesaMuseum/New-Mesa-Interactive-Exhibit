@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import slide1 from '../../assets/StartingPage/slide1.JPG';
-import slide2 from '../../assets/StartingPage/slide2.JPG';
+import slide1 from '/startingPage/slide1.jpg?url';
+import slide2 from '/startingPage/slide2.jpg?url';
 
 function StartingPage() {
   const [fadeOut, setFadeOut] = useState(false);
