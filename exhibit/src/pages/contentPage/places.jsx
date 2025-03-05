@@ -6,6 +6,7 @@ import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
 import header from '/contentPage/header.png?url';
 import chapters from './places.json';
 import bookBackground from '/contentPage/Book_Page.png?url';
+import CircleAnimation from "./header_circle";
 
 const PlacesPage = () => {
   const location = useLocation();
@@ -71,51 +72,21 @@ const PlacesPage = () => {
             <div className="w-full flex justify-between pb-4 px-24 pr-48">
               <a 
                 href="/people" 
-                className={`font-lovers text-black no-underline font-extrabold text-5xl hover:scale-105 transition-transform relative
-                  ${currentPath === '/people' ? `
-                    after:content-[""] 
-                    after:absolute 
-                    after:w-[220%] 
-                    after:h-[140%] 
-                    after:border-4 
-                    after:border-red-500/70
-                    after:rounded-full 
-                    after:-left-[50%] 
-                    after:-top-[30%]
-                    after:backdrop-filter
-                    after:backdrop-contrast-125
-                    after:mix-blend-multiply
-                    after:animate-pulse
-                    after:shadow-[0_0_10px_rgba(239,68,68,0.5)]
-                    after:bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.1)_1px,transparent_1px)] 
-                    after:bg-[length:4px_4px]
-                    after:[filter:url(#grainy)]` : ''}`}
+                className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
-                People
+                <div className="relative inline-block">
+                  People
+                </div>
               </a>
+              
               <a 
                 href="/places" 
-                className={`font-lovers text-black no-underline font-extrabold text-5xl hover:scale-105 transition-transform relative
-                  ${currentPath === '/places' ? `
-                    after:content-[""] 
-                    after:absolute 
-                    after:w-[220%] 
-                    after:h-[140%] 
-                    after:border-4 
-                    after:border-red-500/70
-                    after:rounded-full 
-                    after:-left-[50%] 
-                    after:-top-[30%]
-                    after:backdrop-filter
-                    after:backdrop-contrast-125
-                    after:mix-blend-multiply
-                    after:animate-pulse
-                    after:shadow-[0_0_10px_rgba(239,68,68,0.5)]
-                    after:bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.1)_1px,transparent_1px)] 
-                    after:bg-[length:4px_4px]
-                    after:[filter:url(#grainy)]` : ''}`}
+                className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
-                Places
+                <div className="relative inline-block">
+                  Places
+                  <CircleAnimation />
+                </div>
               </a>
             </div>
           </div>

@@ -7,6 +7,7 @@ import header from '/contentPage/header.png?url';
 import chapters from './chapters.json';
 import bookBackground from '/contentPage/Book_Page.png?url'
 import Typed from "typed.js";
+import CircleAnimation from "./header_circle";
 
 const ContentPage = () => {
   const location = useLocation();
@@ -96,7 +97,7 @@ const ContentPage = () => {
     }
   };
 
-  const handleClick = (selectedIndex, selectedChapter) => { // Updates index and selected chapter when user clicks on name from sidebar
+  const handleClick = (selectedIndex, selectedChapter) => {
     setIndex(selectedIndex);
     setSelectedChapter(selectedChapter);
   };
@@ -108,7 +109,6 @@ const ContentPage = () => {
         className="w-screen h-screen flex bg-cover bg-center overflow-hidden" 
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        
         <div className="h-full flex flex-col flex-grow overflow-hidden"> 
           {/* Header */}
           <div 
@@ -123,57 +123,27 @@ const ContentPage = () => {
             <div className="w-full flex justify-between pb-4 px-24 pr-48">
               <a 
                 href="/people" 
-                className={`font-lovers text-black no-underline font-extrabold text-5xl hover:scale-105 transition-transform relative
-                  ${currentPath === '/people' ? `
-                    after:content-[""] 
-                    after:absolute 
-                    after:w-[220%] 
-                    after:h-[140%] 
-                    after:border-4 
-                    after:border-red-500/70
-                    after:rounded-full 
-                    after:-left-[50%] 
-                    after:-top-[30%]
-                    after:backdrop-filter
-                    after:backdrop-contrast-125
-                    after:mix-blend-multiply
-                    after:animate-pulse
-                    after:shadow-[0_0_10px_rgba(239,68,68,0.5)]
-                    after:bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.1)_1px,transparent_1px)] 
-                    after:bg-[length:4px_4px]
-                    after:[filter:url(#grainy)]` : ''}`}
+                className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
-                People
+                <div className="relative inline-block">
+                  People
+                  <CircleAnimation />
+                </div>
               </a>
+              
               <a 
                 href="/places" 
-                className={`font-lovers text-black no-underline font-extrabold text-5xl hover:scale-105 transition-transform relative
-                  ${currentPath === '/places' ? `
-                    after:content-[""] 
-                    after:absolute 
-                    after:w-[220%] 
-                    after:h-[140%] 
-                    after:border-4 
-                    after:border-red-500/70
-                    after:rounded-full 
-                    after:-left-[50%] 
-                    after:-top-[30%]
-                    after:backdrop-filter
-                    after:backdrop-contrast-125
-                    after:mix-blend-multiply
-                    after:animate-pulse
-                    after:shadow-[0_0_10px_rgba(239,68,68,0.5)]
-                    after:bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.1)_1px,transparent_1px)] 
-                    after:bg-[length:4px_4px]
-                    after:[filter:url(#grainy)]` : ''}`}
+                className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
-                Places
+                <div className="relative inline-block">
+                  Places
+                </div>
               </a>
             </div>
           </div>
 
-
-          {/* Book & Interaction */}
+          {/* Rest of the existing code remains the same */}
+          {/* Book & Interaction Section */}
           <div className="flex flex-1 items-center justify-center gap-8 px-6 pr-24">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
@@ -220,8 +190,6 @@ const ContentPage = () => {
           </div>
         </div>
       </div>
-
-      
 
       {/* Sticky Sidebar */}
       <div 
