@@ -8,6 +8,7 @@ import chapters from './chapters.json';
 import bookBackground from '/contentPage/Book_Page.png?url'
 import Typed from "typed.js";
 import CircleAnimation from "./header_circle";
+import PeopleMedia from "./people_media";
 
 const ContentPage = () => {
   const location = useLocation();
@@ -178,15 +179,7 @@ const ContentPage = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Video Section */}
-            <div className="w-[45%] h-[90%] flex flex-col items-center shadow-lg rounded-lg p-4">
-            <h2 className="text-4xl font-lovers font-extrabold text-white-800 mb-3">Interactive Content</h2>
-            <video className="w-full h-auto rounded-lg shadow-md" controls>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-                <p className="font-imfell">Your browser does not support the video tag.</p>
-              </video>
-            </div>
+            <PeopleMedia />
           </div>
         </div>
       </div>
