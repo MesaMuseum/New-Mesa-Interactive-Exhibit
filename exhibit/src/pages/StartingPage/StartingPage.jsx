@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import slide1 from '/startingPage/slide1.jpg?url';
 import slide2 from '/startingPage/slide2.jpg?url';
+import slide3 from '/startingPage/slide3.jpg?url';
 
 function StartingPage() {
   const [fadeOut, setFadeOut] = useState(false);
@@ -9,7 +10,7 @@ function StartingPage() {
   const [isFading, setIsFading] = useState(false);
   const navigate = useNavigate();
 
-  const images = [slide1, slide2];
+  const images = [slide1, slide2, slide3];
 
   
   useEffect(() => {
