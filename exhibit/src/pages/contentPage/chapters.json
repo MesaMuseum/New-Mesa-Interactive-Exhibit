@@ -6,6 +6,8 @@
       "right_page_content": "In addition to his contributions to the town’s infrastructure, Crismon was known for his compassion and leadership. His legacy lives on through the many landmarks that bear his name.",
       "left_page_image": "path/to/charles_crismon_1.jpg",
       "right_page_image": "path/to/charles_crismon_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the capital of France?",
       "options": ["Berlin", "Madrid", "Paris", "Rome"],
       "answer": "Paris"
@@ -17,6 +19,8 @@
       "right_page_content": "Robson’s work extended beyond architecture; he was deeply involved in social services, helping to establish several local institutions that continue to serve the community.",
       "left_page_image": "path/to/charles_robson_1.jpg",
       "right_page_image": "path/to/charles_robson_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of Robson?",
       "options": ["Berlin", "Robson", "Paris", "Rome"],
       "answer": "Robson"
@@ -28,6 +32,8 @@
       "right_page_content": "Jones’s writings are still studied by historians today. His accounts of interactions with Native American tribes and his explorations of unknown territories are particularly noteworthy.",
       "left_page_image": "path/to/daniel_webster_jones_1.jpg",
       "right_page_image": "path/to/daniel_webster_jones_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of Webster?",
       "options": ["Berlin", "Robson", "Webster", "Rome"],
       "answer": "Webster"
@@ -39,6 +45,8 @@
       "right_page_content": "Though details about his life remain obscure, Doe made contributions to local charity events and was known for his peculiar yet captivating storytelling abilities.",
       "left_page_image": "path/to/john_doe_1.jpg",
       "right_page_image": "path/to/john_doe_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of John?",
       "options": ["Berlin", "Robson", "Paris", "John"],
       "answer": "John"
@@ -50,6 +58,8 @@
       "right_page_content": "Beyond her activism, Smith organized educational programs for women and was instrumental in establishing the first local women's shelter.",
       "left_page_image": "path/to/jane_smith_1.jpg",
       "right_page_image": "path/to/jane_smith_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of Jane?",
       "options": ["Jane", "Robson", "Paris", "Rome"],
       "answer": "Jane"
@@ -61,6 +71,8 @@
       "right_page_content": "Johnson’s legacy includes a scholarship fund for aspiring educators, ensuring her influence continues to benefit the community even after her passing.",
       "left_page_image": "path/to/mary_johnson_1.jpg",
       "right_page_image": "path/to/mary_johnson_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of Mary?",
       "options": ["Berlin", "Robson", "Mary", "Rome"],
       "answer": "Mary"
@@ -72,6 +84,8 @@
       "right_page_content": "In addition to his work on the farm, Brown helped establish local co-ops, giving farmers better access to resources and markets.",
       "left_page_image": "path/to/william_brown_1.jpg",
       "right_page_image": "path/to/william_brown_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of Brown?",
       "options": ["Berlin", "Robson", "Paris", "Brown"],
       "answer": "Brown"
@@ -83,6 +97,8 @@
       "right_page_content": "Taylor’s compositions captured the spirit of the town, and his legacy lives on through the James Taylor Music Festival held annually in his honor.",
       "left_page_image": "path/to/james_taylor_1.jpg",
       "right_page_image": "path/to/james_taylor_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of Taylor?",
       "options": ["Berlin", "Taylor", "Paris", "Rome"],
       "answer": "Taylor"
@@ -94,6 +110,8 @@
       "right_page_content": "Wilson's art continues to be celebrated, with her paintings displayed in the town museum, serving as an inspiration for aspiring artists.",
       "left_page_image": "path/to/emily_wilson_1.jpg",
       "right_page_image": "path/to/emily_wilson_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of Emily?",
       "options": ["Berlin", "Robson", "Paris", "Emily"],
       "answer": "Emily"
@@ -105,6 +123,8 @@
       "right_page_content": "Thompson also invested in community projects, funding parks and recreational areas that are still enjoyed by residents today.",
       "left_page_image": "path/to/oliver_thompson_1.jpg",
       "right_page_image": "path/to/oliver_thompson_2.jpg",
+      "left_page_template_number": "TLBR",
+      "right_page_template_number": "TLBR",
       "question": "What is the name of Oliver?",
       "options": ["Oliver", "Robson", "Paris", "Rome"],
       "answer": "Oliver"
