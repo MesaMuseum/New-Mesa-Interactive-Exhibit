@@ -179,7 +179,7 @@ const ContentPage = () => {
                 </div>
               </div>
             </div>
-            <PeopleMedia />
+            <PeopleMedia selectedChapter={selectedChapter}/>
           </div>
         </div>
       </div>
