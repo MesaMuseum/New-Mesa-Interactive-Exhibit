@@ -1,20 +1,28 @@
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from 'react-router-dom';
 import backgroundImage from '/contentPage/Desk_Background.png?url'; 
 import sideImageDefault from '/contentPage/Contents_Sidebar_Minimized.png?url';
 import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
 import header from '/contentPage/header.png?url';
 import chapters from './places.json';
 import bookBackground from '/contentPage/Book_Page.png?url';
+import Typed from "typed.js";
 import CircleAnimation from "./header_circle";
+import TemplateTRBL from './templates/template_TRBL';
+import TemplateBC from './templates/template_BC';
+import TemplateTC from './templates/template_TC';
+import TemplateCC from './templates/template_CC';
+import TemplateTLBR from './templates/template_TLBR';
 
 const PlacesPage = () => {
-  const location = useLocation();
-  const currentPath = location.pathname;
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(chapters[0]); 
   const sidebarRef = useRef(null);
   const [index, setIndex] = useState(0);
+
+  const leftHeaderRef = useRef(null);
+  const rightHeaderRef = useRef(null);
+  const leftContentRef = useRef(null);
+  const rightContentRef = useRef(null);
 
   const goToPreviousChapter = () => {
     if (index > 0) {
@@ -41,14 +49,71 @@ const PlacesPage = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (leftHeaderRef.current && rightHeaderRef.current && leftContentRef.current && rightContentRef.current) {
+      leftHeaderRef.current.innerHTML = "";
+      rightHeaderRef.current.innerHTML = "";
+      leftContentRef.current.innerHTML = "";
+      rightContentRef.current.innerHTML = "";
+
+      const typedLeftHeader = new Typed(leftHeaderRef.current, {
+        strings: [selectedChapter?.title_left_page || ""],
+        typeSpeed: 50,
+        showCursor: false,
+      });
+
+      const typedRightHeader = new Typed(rightHeaderRef.current, {
+        strings: [selectedChapter?.title_right_page || ""],
+        typeSpeed: 50,
+        showCursor: false,
+      });
+
+      const typedLeftContent = new Typed(leftContentRef.current, {
+        strings: [selectedChapter?.left_page_content || ""],
+        typeSpeed: 20,
+        showCursor: false,
+      });
+
+      const typedRightContent = new Typed(rightContentRef.current, {
+        strings: [selectedChapter?.right_page_content || ""],
+        typeSpeed: 20,
+        showCursor: false,
+      });
+
+      return () => {
+        typedLeftHeader.destroy();
+        typedRightHeader.destroy();
+        typedLeftContent.destroy();
+        typedRightContent.destroy();
+      };
+    }
+  }, [selectedChapter]);
+
   const toggleSidebar = (e) => {
     e.stopPropagation();
     setIsSidebarExpanded(!isSidebarExpanded);
   };
 
-  const handleClick = (selectedIndex, selectedChapter) => { // Updates index and selected chapter when user clicks on name from sidebar
+  const handleClick = (selectedIndex, selectedChapter) => {
     setIndex(selectedIndex);
     setSelectedChapter(selectedChapter);
+  };
+
+  const renderTemplate = (templateNumber, headerRef, contentRef, imageUrl) => {
+    switch (templateNumber) {
+      case 'TRBL':
+        return <TemplateTRBL headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      case 'BC':
+        return <TemplateBC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      case 'TC':
+        return <TemplateTC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      case 'CC':
+        return <TemplateCC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      case 'TLBR':
+        return <TemplateTLBR headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      default:
+        return <TemplateTC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+    }
   };
 
   return (
@@ -100,31 +165,21 @@ const PlacesPage = () => {
               {/* Book Pages Container */}
               <div className="flex flex-row justify-between px-8 h-full pb-8">
                 {/* Left Page */}
-                <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
-                  <h3 className="text-3xl font-lovers font-bold text-black mb-4">
-                    {selectedChapter?.title_left_page}
-                  </h3>
-                  <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
-                    {/* Placeholder for left page image */}
-                  </div>
-                  <p className="text-base font-imfell text-black font-medium leading-relaxed">
-                    {selectedChapter?.left_page_content}
-                  </p>
-                </div>
+                {renderTemplate(
+                  selectedChapter?.left_page_template_number || 'TC',
+                  leftHeaderRef,
+                  leftContentRef,
+                  selectedChapter?.left_page_image
+                )}
 
                 {/* Right Page */}
-                <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
-                  <h3 className="text-3xl font-lovers font-bold text-black mb-4">
-                    {selectedChapter?.title_right_page}
-                  </h3>
-            
-                  <p className="text-base font-imfell text-black font-medium leading-relaxed">
-                    {selectedChapter?.right_page_content}
-                  </p>
-                  <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
-                    {/* Placeholder for right page image */}
-                  </div>
-                </div>
+                {renderTemplate(
+                  selectedChapter?.right_page_template_number || 'TC',
+                  rightHeaderRef,
+                  rightContentRef,
+                  selectedChapter?.right_page_image
+                )}
+                
                 {/* Previous and Next Buttons*/}
                 <div className="absolute bottom-5 left-6 text-xs">
                   <img src="/prev_icon.png" onClick={goToPreviousChapter} className={`w-[30px] h-[30px] ${index === 0 ? 'opacity-50' : ''}`} ></img>
