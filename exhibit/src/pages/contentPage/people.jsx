@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from 'react-router-dom';
 import backgroundImage from '/contentPage/Desk_Background.png?url'; 
 import sideImageDefault from '/contentPage/Contents_Sidebar_Minimized.png?url';
 import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
@@ -9,10 +8,13 @@ import bookBackground from '/contentPage/Book_Page.png?url'
 import Typed from "typed.js";
 import CircleAnimation from "./header_circle";
 import PeopleMedia from "./people_media";
+import TemplateTRBL from './templates/template_TRBL';
+import TemplateBC from './templates/template_BC';
+import TemplateTC from './templates/template_TC';
+import TemplateCC from './templates/template_CC';
+import TemplateTLBR from './templates/template_TLBR';
 
 const ContentPage = () => {
-  const location = useLocation();
-  const currentPath = location.pathname;
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(chapters[0]); 
   const sidebarRef = useRef(null);
@@ -103,6 +105,23 @@ const ContentPage = () => {
     setSelectedChapter(selectedChapter);
   };
 
+  const renderTemplate = (templateNumber, headerRef, contentRef, imageUrl) => {
+    switch (templateNumber) {
+      case 'TRBL':
+        return <TemplateTRBL headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      case 'BC':
+        return <TemplateBC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      case 'TC':
+        return <TemplateTC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      case 'CC':
+        return <TemplateCC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      case 'TLBR':
+        return <TemplateTLBR headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+      default:
+        return <TemplateTC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+    }
+  };
+
   return (
     <div className="relative">
       {/* Main Content */}
@@ -143,7 +162,6 @@ const ContentPage = () => {
             </div>
           </div>
 
-          {/* Rest of the existing code remains the same */}
           {/* Book & Interaction Section */}
           <div className="flex flex-1 items-center justify-center gap-8 px-6 pr-24">
             {/* Book Content */}
@@ -153,22 +171,20 @@ const ContentPage = () => {
               {/* Book Pages Container */}
               <div className="flex flex-row justify-between px-8 h-full pb-8">
                 {/* Left Page */}
-                 <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
-                  <h3 ref={leftHeaderRef} className="text-3xl font-lovers font-bold text-black mb-4"></h3>
-                  <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
-                    {/* Placeholder for left page image */}
-                  </div>
-                  <p ref={leftContentRef} className="text-base font-imfell text-black font-medium leading-relaxed"></p>
-                </div>
+                {renderTemplate(
+                  selectedChapter?.left_page_template_number || 'TC',
+                  leftHeaderRef,
+                  leftContentRef,
+                  selectedChapter?.left_page_image
+                )}
 
                 {/* Right Page */}
-                <div className="w-[48%] flex flex-col space-y-4 p-6 rounded-lg">
-                  <h3 ref={rightHeaderRef} className="text-3xl font-lovers font-bold text-black mb-4"></h3>
-                  <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mb-4">
-                    {/* Placeholder for left page image */}
-                  </div>
-                  <p ref={rightContentRef} className="text-base font-imfell text-black font-medium leading-relaxed"></p>
-                </div>
+                {renderTemplate(
+                  selectedChapter?.right_page_template_number || 'TC',
+                  rightHeaderRef,
+                  rightContentRef,
+                  selectedChapter?.right_page_image
+                )}
                 
                 {/* Previous and Next Buttons*/}
                 <div className="absolute bottom-5 left-6 text-xs">
