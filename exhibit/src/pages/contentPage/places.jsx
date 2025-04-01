@@ -12,6 +12,7 @@ import TemplateBC from './templates/template_BC';
 import TemplateTC from './templates/template_TC';
 import TemplateCC from './templates/template_CC';
 import TemplateTLBR from './templates/template_TLBR';
+import PlacesMedia from "./places_media";
 
 const PlacesPage = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -189,17 +190,8 @@ const PlacesPage = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Video Section */}
-            <div className="w-[45%] h-[90%] flex flex-col items-center shadow-lg rounded-lg p-4">
-              <h2 className="text-4xl font-lovers font-extrabold text-white-800 mb-3">Interactive Content</h2>
-              <video className="w-full h-auto rounded-lg shadow-md" controls>
-                <source src="/temp.mp4" type="video/mp4" />
-                <p className="font-imfell">Your browser does not support the video tag.</p>
-              </video>
-            </div>
+            <PlacesMedia selectedChapter={selectedChapter} />
           </div>
-          
         </div>
       </div>
 

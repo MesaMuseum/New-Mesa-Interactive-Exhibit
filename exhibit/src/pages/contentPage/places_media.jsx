@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const PeopleMedia = ({ selectedChapter }) => {
+const PlacesMedia = ({ selectedChapter }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
 
@@ -64,4 +64,4 @@ const PeopleMedia = ({ selectedChapter }) => {
   );
 };
 
-export default PeopleMedia;
+export default PlacesMedia;

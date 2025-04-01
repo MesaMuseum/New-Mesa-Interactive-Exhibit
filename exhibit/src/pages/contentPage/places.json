@@ -8,9 +8,9 @@
       "right_page_image": "path/to/charles_crismon_2.jpg",
       "left_page_template_number": "BC",
       "right_page_template_number": "TLBR",
-      "question": "What is the capital of France?",
-      "options": "",
-      "answer": ""
+      "question": "What is the name of Place1?",
+      "options": ["Berlin", "Place1", "Paris", "Rome"],
+      "answer": "Place1"
     },
     {
       "title_left_page": "Charles Robson - I",
@@ -21,9 +21,9 @@
         "right_page_image": "path/to/charles_robson_2.jpg",
         "left_page_template_number": "TLBR", 
         "right_page_template_number": "TLBR",
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place2?",
+        "options": ["Berlin", "Place2", "Paris", "Rome"],
+        "answer": "Place2"
     },
     {
       "title_left_page": "Daniel Webster Jones - I",
@@ -34,9 +34,9 @@
         "right_page_image": "path/to/daniel_webster_jones_2.jpg",
         "left_page_template_number": "TLBR",
         "right_page_template_number": "TLBR",
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place3?",
+        "options": ["Berlin", "Place3", "Paris", "Rome"],
+        "answer": "Place3"
     },
     {
       "title_left_page": "John Doe - I",
@@ -47,9 +47,9 @@
         "right_page_image": "path/to/john_doe_2.jpg",
         "left_page_template_number": "TLBR",
         "right_page_template_number": "TLBR",
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place4?",
+        "options": ["Berlin", "Place4", "Paris", "Rome"],
+        "answer": "Place4"
     },
     {
       "title_left_page": "Jane Smith - I",
@@ -60,9 +60,9 @@
         "right_page_image": "path/to/jane_smith_2.jpg",
         "left_page_template_number": "TLBR",
         "right_page_template_number": "TLBR",  
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place5?",
+        "options": ["Berlin", "Place5", "Paris", "Rome"],
+        "answer": "Place5"
     },
     {
       "title_left_page": "Mary Johnson - I",
@@ -73,9 +73,9 @@
         "right_page_image": "path/to/mary_johnson_2.jpg",
         "left_page_template_number": "TLBR",
         "right_page_template_number": "TLBR",
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place6?",
+        "options": ["Berlin", "Place6", "Paris", "Rome"],
+        "answer": "Place6"
     },
     {
       "title_left_page": "William Brown - I",
@@ -86,9 +86,9 @@
         "right_page_image": "path/to/william_brown_2.jpg",
         "left_page_template_number": "TLBR",
         "right_page_template_number": "TLBR",
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place7?",
+      "options": ["Berlin", "Place7", "Paris", "Rome"],
+      "answer": "Place7"
     },
     {
       "title_left_page": "James Taylor - I",
@@ -99,9 +99,9 @@
         "right_page_image": "path/to/james_taylor_2.jpg",
         "left_page_template_number": "TLBR",
         "right_page_template_number": "TLBR",
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place8?",
+        "options": ["Berlin", "Place8", "Paris", "Rome"],
+        "answer": "Place8"
     },
     {
       "title_left_page": "Emily Wilson - I",
@@ -112,9 +112,9 @@
         "right_page_image": "path/to/emily_wilson_2.jpg",
         "left_page_template_number": "TLBR",
         "right_page_template_number": "TLBR",
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place9?",
+        "options": ["Berlin", "Place9", "Paris", "Rome"],
+        "answer": "Place9"
     },
     {
       "title_left_page": "Oliver Thompson - I",
@@ -125,9 +125,9 @@
         "right_page_image": "path/to/oliver_thompson_2.jpg",
         "left_page_template_number": "TLBR",
         "right_page_template_number": "TLBR",
-        "question": "What is the capital of France?",
-        "options": "",
-        "answer": ""
+        "question": "What is the name of Place10?",
+        "options": ["Berlin", "Place10", "Paris", "Rome"],
+        "answer": "Place10"
     }
   ]
   
