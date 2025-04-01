@@ -61,6 +61,13 @@ function StartingPage() {
         ))}
       </div>
 
+      {/* Black Overlay for Fade-to-Black Transition */}
+      <div
+        className={`absolute top-0 left-0 w-full h-full bg-black transition-opacity duration-2000 ${
+          fadeOut ? 'opacity-100' : 'opacity-0'
+        }`}
+      ></div>
+
       {/* Overlay Text */}
       <h1
         className={`absolute text-8xl font-Cormorant text-white drop-shadow transition-opacity duration-[2000ms] ${

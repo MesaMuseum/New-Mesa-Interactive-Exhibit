@@ -139,7 +139,7 @@ function RoomPage() {
   return (
     <div className="relative w-full h-screen z-50">
       <div
-        className={`absolute inset-0 bg-white transition-opacity duration-[1000ms] ease-out ${
+        className={`absolute inset-0 bg-black transition-opacity duration-[1000ms] ease-out ${
           fade ? 'opacity-100' : 'opacity-0'
         } pointer-events-none z-50`}
       />
