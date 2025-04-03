@@ -1,9 +1,27 @@
 [
     {
-      "title_left_page": "PLACES",
-      "title_right_page": "PLACES",
-      "left_page_content": "Charles Crismon was a pioneer in the early settlement, contributing significantly to the foundation of this town. His work laid the groundwork for future developments and was pivotal in the growth of the community.",
-      "right_page_content": "In addition to his contributions to the town’s infrastructure, Crismon was known for his compassion and leadership. His legacy lives on through the many landmarks that bear his name.",
+      "title_left_page": "Buckhorn Baths",
+      "title_right_page": "This is the place",
+      "left_page_content":  { 
+        "div_1" : "IIn 1936, Ted and Alice Sliger bought a ten-acre parcel of undeveloped desert outside of Mesa’s eastern city limits in 1936. This acreage was located on one of Arizona’s major tourist routes connecting the Salt River Valley with attractions in south and central Arizona, with the Mogollon Rim in the north and the White Mountains in eastern Arizona. . In 1939, the Sligers dug a well on their property and rather than finding cool drinking water, they tapped into a mineral rich thermal spring that gushed at 112 degrees Fahrenheit", 
+        "div_2" : ""
+      },
+      "right_page_content": "Recognizing its potential, Ted and Alice began to turn the property into a tourist attraction. They built a bathhouse that accommodated seventy-five visitors a day. The Giants discovered the Buckhorn Baths in 1947 and it served as a Giants pre-spring training camp until 1972. The Giants were always greeted at the Buckhorn with a banner saying, “Welcome to the Buckhorn New York Giants” (and later San Francisco).",
+      "left_page_image": "path/to/charles_crismon_1.jpg",
+      "right_page_image": "path/to/charles_crismon_2.jpg",
+      "left_page_template_number": "BC",
+      "right_page_template_number": "TLBR",
+      "question": "What is the name of Place1?",
+      "options": ["Berlin", "Place1", "Paris", "Rome"],
+      "answer": "Place1"
+    },
+    {
+      "title_left_page": "Buckhorn Baths - I",
+      "title_right_page": "The place",
+      "left_page_content" : { 
+        "div_1": "In 1936, Ted and Alice Sliger bought a ten-acre parcel of undeveloped desert outside of Mesa’s eastern city limits in 1936. This acreage was located on one of Arizona’s major tourist routes connecting the Salt River Valley with attractions in south and central Arizona, with the Mogollon Rim in the north and the White Mountains in eastern Arizona. In 1939, the Sligers dug a well on their property and rather than finding cool drinking water, they tapped into a mineral rich thermal spring that gushed at 112 degrees Fahrenheit.",
+        "div_2": "Recognizing its potential, Ted and Alice began to turn the property into a tourist attraction. They built a bathhouse that accommodated seventy-five visitors a day."},
+      "right_page_content": "In 1939, the Sligers dug a well on their property and rather than finding cool drinking water, they tapped into a mineral rich thermal spring that gushed at 112 degrees Fahrenheit. Recognizing its potential, Ted and Alice began to turn the property into a tourist attraction. They built a bathhouse that accommodated seventy-five visitors a day. ",
       "left_page_image": "path/to/charles_crismon_1.jpg",
       "right_page_image": "path/to/charles_crismon_2.jpg",
       "left_page_template_number": "BC",
