@@ -4,6 +4,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import { TextureLoader } from 'three';
 import { useNavigate, Link } from 'react-router-dom';
+import Carousel from './Carousel';
 
 import slide1 from '/startingPage/slide1.jpg?url';
 
@@ -218,14 +219,8 @@ function MenuPage() {
 
   return (
     <div className="h-screen w-screen overflow-hidden bg-gray-900 text-white flex flex-col items-center">
-      {/* Carousel/Slider Section */}
-      <div className="h-3/6 w-4/5 flex items-center justify-center py-8 px-8">
-        <img
-          src={slide1}
-          alt="Historic site"
-          className="w-full h-full object-cover rounded-md shadow-lg"
-        />
-      </div>
+      
+      <Carousel />
 
       {/* Title / Subheading */}
       <div className="text-center mb-4">
