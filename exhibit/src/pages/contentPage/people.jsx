@@ -23,8 +23,10 @@ const ContentPage = () => {
   // Refs for the typing animation
   const leftHeaderRef = useRef(null);
   const rightHeaderRef = useRef(null);
-  const leftContentRef = useRef(null);
-  const rightContentRef = useRef(null);
+  const leftContentTopRef = useRef(null);
+  const leftContentBottomRef = useRef(null);
+  const rightContentTopRef = useRef(null);
+  const rightContentBottomRef = useRef(null);
     
   // Handle clicks outside sidebar
   useEffect(() => {
@@ -40,12 +42,14 @@ const ContentPage = () => {
 
   // Typing animation for title and content
   useEffect(() => {
-    if (leftHeaderRef.current && rightHeaderRef.current && leftContentRef.current && rightContentRef.current) {
+    if (leftHeaderRef.current && rightHeaderRef.current && leftContentTopRef.current && leftContentBottomRef.current && rightContentTopRef.current && rightContentBottomRef.current) {
       // Destroy previous Typed instances if they exist
       leftHeaderRef.current.innerHTML = "";
       rightHeaderRef.current.innerHTML = "";
-      leftContentRef.current.innerHTML = "";
-      rightContentRef.current.innerHTML = "";
+      leftContentTopRef.current.innerHTML = "";
+      leftContentBottomRef.current.innerHTML = "";
+      rightContentTopRef.current.innerHTML = "";
+      rightContentBottomRef.current.innerHTML = "";
 
       const typedLeftHeader = new Typed(leftHeaderRef.current, {
         strings: [selectedChapter?.title_left_page || ""],
@@ -59,14 +63,26 @@ const ContentPage = () => {
         showCursor: false,
       });
 
-      const typedLeftContent = new Typed(leftContentRef.current, {
-        strings: [selectedChapter?.left_page_content || ""],
+      const typedLeftTopContent = new Typed(leftContentTopRef.current, {
+        strings: [selectedChapter?.left_page_top_content || ""],
         typeSpeed: 20,
         showCursor: false,
       });
 
-      const typedRightContent = new Typed(rightContentRef.current, {
-        strings: [selectedChapter?.right_page_content || ""],
+      const typedLeftBottomContent = new Typed(leftContentBottomRef.current, {
+        strings: [selectedChapter?.left_page_bottom_content || ""],
+        typeSpeed: 20,
+        showCursor: false,
+      });
+
+      const typedRightTopContent = new Typed(rightContentTopRef.current, {
+        strings: [selectedChapter?.right_page_top_content || ""],
+        typeSpeed: 20,
+        showCursor: false,
+      });
+
+      const typedRightBottomContent = new Typed(rightContentBottomRef.current, {
+        strings: [selectedChapter?.right_page_bottom_content || ""],
         typeSpeed: 20,
         showCursor: false,
       });
@@ -74,8 +90,10 @@ const ContentPage = () => {
       return () => {
         typedLeftHeader.destroy();
         typedRightHeader.destroy();
-        typedLeftContent.destroy();
-        typedRightContent.destroy();
+        typedLeftTopContent.destroy();
+        typedLeftBottomContent.destroy();
+        typedRightTopContent.destroy();
+        typedRightBottomContent.destroy();
       };
     }
   }, [selectedChapter]);
@@ -105,20 +123,21 @@ const ContentPage = () => {
     setSelectedChapter(selectedChapter);
   };
 
-  const renderTemplate = (templateNumber, headerRef, contentRef, imageUrl) => {
+
+  const renderTemplate = (templateNumber, headerRef, topRef, bottomRef, imageUrl) => {
     switch (templateNumber) {
       case 'TRBL':
-        return <TemplateTRBL headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+        return <TemplateTRBL headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
       case 'BC':
-        return <TemplateBC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+        return <TemplateBC headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
       case 'TC':
-        return <TemplateTC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+        return <TemplateTC headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
       case 'CC':
-        return <TemplateCC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+        return <TemplateCC headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
       case 'TLBR':
-        return <TemplateTLBR headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+        return <TemplateTLBR headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
       default:
-        return <TemplateTC headerRef={headerRef} contentRef={contentRef} imageUrl={imageUrl} />;
+        return <TemplateTC headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
     }
   };
 
@@ -163,18 +182,19 @@ const ContentPage = () => {
           </div>
 
           {/* Book & Interaction Section */}
-          <div className="flex flex-1 items-center justify-center gap-8 px-6 pr-24">
+          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24 leading-5">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
-              <div className="flex flex-row justify-between px-8 h-full pb-8">
+              <div className="flex flex-row justify-between px-1 h-full pb-8">
                 {/* Left Page */}
                 {renderTemplate(
                   selectedChapter?.left_page_template_number || 'TC',
                   leftHeaderRef,
-                  leftContentRef,
+                  leftContentTopRef,
+                  leftContentBottomRef,
                   selectedChapter?.left_page_image
                 )}
 
@@ -182,7 +202,8 @@ const ContentPage = () => {
                 {renderTemplate(
                   selectedChapter?.right_page_template_number || 'TC',
                   rightHeaderRef,
-                  rightContentRef,
+                  rightContentTopRef,
+                  rightContentBottomRef,
                   selectedChapter?.right_page_image
                 )}
                 
