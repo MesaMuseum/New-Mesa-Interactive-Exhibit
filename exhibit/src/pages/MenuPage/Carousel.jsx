@@ -16,7 +16,8 @@ function Carousel() {
     <div className="bg-white text-black text-xl w-1/2 mx-auto my-5">
     <Slider {...settings}>
       <div className="h-[300px]">
-        <img className="" src="/startingPage/slide1.jpg"></img>
+        <a href="/carousel_1">
+        <img className="" src="/menuPage/carousel_1_thumbnail.png"></img></a>
       </div>
       <div>
         <h3>2</h3>

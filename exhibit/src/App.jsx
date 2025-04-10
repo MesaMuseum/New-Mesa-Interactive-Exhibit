@@ -4,6 +4,7 @@ import RoomPage from "./pages/RoomPage/RoomPage";
 import PeoplePage from "./pages/contentPage/people";
 import PlacesPage from "./pages/contentPage/places";
 import MenuPage from "./pages/MenuPage/MenuPage";
+import Carousel_1 from "./pages/MenuPage/CarouselContent/carousel_1";
 import './index.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/people" element={<PeoplePage />} />
         <Route path="/places" element={<PlacesPage />} />
         <Route path="/menu" element={<MenuPage />} />
+        <Route path="/carousel_1" element={<Carousel_1 />} />
       </Routes>
     </Router>
   );
