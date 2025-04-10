@@ -1,4 +1,4 @@
-const TemplateTC = ({ headerRef, contentRef, imageUrl }) => {
+const TemplateTC = ({ headerRef, topRef, bottomRef, imageUrl }) => {
   return (
     <div className="w-[48%] flex flex-col p-6 rounded-lg">
       <h3 ref={headerRef} className="text-3xl font-lovers font-bold text-black mb-4"></h3>
@@ -6,7 +6,8 @@ const TemplateTC = ({ headerRef, contentRef, imageUrl }) => {
         {/* Top center image */}
       </div>
       <div className="flex-1">
-        <p ref={contentRef} className="text-base font-imfell text-black font-medium leading-relaxed"></p>
+        <p ref={topRef} className="text-base font-imfell text-black font-medium leading-relaxed"></p>
+        <p ref={bottomRef} className="text-base font-imfell text-black font-medium leading-relaxed"></p>
       </div>
     </div>
   );
