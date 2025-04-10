@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { TextureLoader } from 'three';
 import { useNavigate, Link } from 'react-router-dom';
 import Carousel from './Carousel';
+import backgroundImg from '../../assets/MenuPage/menu_background.png';
 
 import slide1 from '/startingPage/slide1.jpg?url';
 
@@ -218,7 +219,15 @@ function MenuPage() {
   }, []);
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-gray-900 text-white flex flex-col items-center">
+      <div
+      className="h-screen w-screen overflow-hidden bg-gray-900 text-white flex flex-col items-center"
+      style={{
+        backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+      >
       
       <Carousel />
 
@@ -239,7 +248,7 @@ function MenuPage() {
           className="w-full h-full"
           camera={{ fov: 45, position: [-60, 40, 7] }}
           onCreated={({ camera }) => (cameraRef.current = camera)}
-          style={{ backgroundColor: 'black' }}
+          style={{ backgroundColor: 'transparent' }}
         >
           <ambientLight intensity={10} />
           <BookModel onClick={() => handleBookClick('/timeline')} cameraRef={cameraRef} />
