@@ -244,7 +244,7 @@ function MenuPage() {
           className="w-full h-full"
           camera={{ fov: 45, position: [-60, 40, 7] }}
           onCreated={({ camera }) => (cameraRef.current = camera)}
-          style={{ backgroundColor: 'black' }}
+          style={{ backgroundColor: 'transparent' }}
         >
           <ambientLight intensity={10} />
           <BookModel onClick={() => handleBookClick('/timeline')} cameraRef={cameraRef} />
