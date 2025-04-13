@@ -13,20 +13,13 @@ import TemplateBC from './templates/template_BC';
 import TemplateTC from './templates/template_TC';
 import TemplateCC from './templates/template_CC';
 import TemplateTLBR from './templates/template_TLBR';
+import "../../styles/text-animation.css"
 
 const ContentPage = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(chapters[0]); 
   const sidebarRef = useRef(null);
   const [index, setIndex] = useState(0);
-
-  // Refs for the typing animation
-  const leftHeaderRef = useRef(null);
-  const rightHeaderRef = useRef(null);
-  const leftContentTopRef = useRef(null);
-  const leftContentBottomRef = useRef(null);
-  const rightContentTopRef = useRef(null);
-  const rightContentBottomRef = useRef(null);
     
   // Handle clicks outside sidebar
   useEffect(() => {
@@ -39,64 +32,6 @@ const ContentPage = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  // Typing animation for title and content
-  useEffect(() => {
-    if (leftHeaderRef.current && rightHeaderRef.current && leftContentTopRef.current && leftContentBottomRef.current && rightContentTopRef.current && rightContentBottomRef.current) {
-      // Destroy previous Typed instances if they exist
-      leftHeaderRef.current.innerHTML = "";
-      rightHeaderRef.current.innerHTML = "";
-      leftContentTopRef.current.innerHTML = "";
-      leftContentBottomRef.current.innerHTML = "";
-      rightContentTopRef.current.innerHTML = "";
-      rightContentBottomRef.current.innerHTML = "";
-
-      const typedLeftHeader = new Typed(leftHeaderRef.current, {
-        strings: [selectedChapter?.title_left_page || ""],
-        typeSpeed: 50,
-        showCursor: false,
-      });
-
-      const typedRightHeader = new Typed(rightHeaderRef.current, {
-        strings: [selectedChapter?.title_right_page || ""],
-        typeSpeed: 50,
-        showCursor: false,
-      });
-
-      const typedLeftTopContent = new Typed(leftContentTopRef.current, {
-        strings: [selectedChapter?.left_page_top_content || ""],
-        typeSpeed: 20,
-        showCursor: false,
-      });
-
-      const typedLeftBottomContent = new Typed(leftContentBottomRef.current, {
-        strings: [selectedChapter?.left_page_bottom_content || ""],
-        typeSpeed: 20,
-        showCursor: false,
-      });
-
-      const typedRightTopContent = new Typed(rightContentTopRef.current, {
-        strings: [selectedChapter?.right_page_top_content || ""],
-        typeSpeed: 20,
-        showCursor: false,
-      });
-
-      const typedRightBottomContent = new Typed(rightContentBottomRef.current, {
-        strings: [selectedChapter?.right_page_bottom_content || ""],
-        typeSpeed: 20,
-        showCursor: false,
-      });
-
-      return () => {
-        typedLeftHeader.destroy();
-        typedRightHeader.destroy();
-        typedLeftTopContent.destroy();
-        typedLeftBottomContent.destroy();
-        typedRightTopContent.destroy();
-        typedRightBottomContent.destroy();
-      };
-    }
-  }, [selectedChapter]);
 
   // Toggle sidebar
   const toggleSidebar = (e) => {
@@ -124,22 +59,29 @@ const ContentPage = () => {
   };
 
 
-  const renderTemplate = (templateNumber, headerRef, topRef, bottomRef, imageUrl) => {
-    switch (templateNumber) {
-      case 'TRBL':
-        return <TemplateTRBL headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
-      case 'BC':
-        return <TemplateBC headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
-      case 'TC':
-        return <TemplateTC headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
-      case 'CC':
-        return <TemplateCC headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
-      case 'TLBR':
-        return <TemplateTLBR headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
-      default:
-        return <TemplateTC headerRef={headerRef} topRef={topRef} bottomRef={bottomRef} imageUrl={imageUrl} />;
+  const renderTemplate = (templateNumber, title, topContent, bottomContent, imageUrl) => {
+    const props = {
+      title,
+      topContent,
+      bottomContent,
+      imageUrl,
     }
-  };
+
+    switch (templateNumber) {
+      case "TRBL":
+        return <TemplateTRBL {...props} />
+      case "BC":
+        return <TemplateBC {...props} />
+      case "TC":
+        return <TemplateTC {...props} />
+      case "CC":
+        return <TemplateCC {...props} />
+      case "TLBR":
+        return <TemplateTLBR {...props} />
+      default:
+        return <TemplateTC {...props} />
+    }
+  }
 
   return (
     <div className="relative">
@@ -182,7 +124,7 @@ const ContentPage = () => {
           </div>
 
           {/* Book & Interaction Section */}
-          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24 leading-5">
+          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24 leading-6">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
@@ -191,20 +133,20 @@ const ContentPage = () => {
               <div className="flex flex-row justify-between px-1 h-full pb-8">
                 {/* Left Page */}
                 {renderTemplate(
-                  selectedChapter?.left_page_template_number || 'TC',
-                  leftHeaderRef,
-                  leftContentTopRef,
-                  leftContentBottomRef,
-                  selectedChapter?.left_page_image
+                  selectedChapter?.left_page_template_number || "TC",
+                  selectedChapter?.title_left_page || "",
+                  selectedChapter?.left_page_top_content || "",
+                  selectedChapter?.left_page_bottom_content || "",
+                  selectedChapter?.left_page_image,
                 )}
 
                 {/* Right Page */}
                 {renderTemplate(
-                  selectedChapter?.right_page_template_number || 'TC',
-                  rightHeaderRef,
-                  rightContentTopRef,
-                  rightContentBottomRef,
-                  selectedChapter?.right_page_image
+                  selectedChapter?.right_page_template_number || "TC",
+                  selectedChapter?.title_right_page || "",
+                  selectedChapter?.right_page_top_content || "",
+                  selectedChapter?.right_page_bottom_content || "",
+                  selectedChapter?.right_page_image,
                 )}
                 
                 {/* Previous and Next Buttons*/}

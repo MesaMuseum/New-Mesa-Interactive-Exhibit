@@ -1,0 +1,76 @@
+:root {
+  --background: #00000000;
+  --base: #00000000;
+  --accent: #000000;
+  --shadow: #00000000;
+}
+
+.cool {
+  display: inline;
+}
+
+.cool span {
+  color: var(--shadow);
+  display: inline-block;
+  position: relative;
+  /* Default animation delay (will be overridden by inline style) */
+  --animation-delay: 0s;
+}
+
+/* the magic, kinda */
+.cool span::before {
+  animation: max-height 1s cubic-bezier(0.61, 1, 0.88, 1) 1 normal both;
+  animation-delay: var(--animation-delay);
+  color: var(--accent);
+}
+
+.cool span::after {
+  animation: max-width 0.7s cubic-bezier(0.61, 1, 0.88, 1) 1 normal both;
+  animation-delay: var(--animation-delay);
+  color: var(--accent);
+}
+
+.cool span::before,
+.cool span::after {
+  /* Using data attribute to avoid duplicated content in HTML */
+  content: attr(data-text);
+  left: 0;
+  /* The overflowing text is cut off */
+  overflow: hidden;
+  position: absolute;
+  /* Set the speak property to none, because we don't want screen readers to read every word in the paragraph twice */
+  speak: none;
+  border-radius: 10px;
+}
+
+@media (prefers-reduced-motion) {
+  .cool span {
+    color: var(--base);
+  }
+
+  .cool span::before,
+  .cool span::after {
+    animation: none;
+    content: "";
+  }
+}
+
+@keyframes max-width {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 100%;
+  }
+}
+
+@keyframes max-height {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 100%;
+    opacity: 1;
+  }
+}
