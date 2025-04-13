@@ -11,55 +11,69 @@ import deskImg from '../../assets/MenuPage/desk_menu.png';
 import slide1 from '/startingPage/slide1.jpg?url';
 
 
-// --- 3D Book Model Components ---
-function BookModel({ onClick, cameraRef }) {
-  const { scene } = useGLTF('/compressed_book.glb');
+
+function BookModel({
+  gltfPath,
+  onClick,
+  cameraRef,
+  initialPosition,
+  initialRotation,
+  scaleVal,
+}) {
+  const { scene } = useGLTF(gltfPath);
   const bookRef = useRef();
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Book initial and final positions
-  const initialPosition = useRef(new THREE.Vector3(370, -200, 110));
-  const finalPosition = new THREE.Vector3(60, -10, -5);
+  // Final target values: move toward center and scale up.
+  const finalPosition = new THREE.Vector3(0, 0, 10);
+  const finalScale = new THREE.Vector3(
+    scaleVal[0] * 2,
+    scaleVal[1] * 2,
+    scaleVal[2] * 2
+  );
+  // Define a final camera position for the zoom effect.
+  const finalCameraPosition = new THREE.Vector3(0, 0, 2);
 
-  // Book initial and final rotations
-  const initialRotation = useRef([Math.PI / 2, -Math.PI / 2, Math.PI / 2]);
-  const finalRotation = [Math.PI / 2, 0.1, Math.PI / 2 - 0.1];
-
-  // Final camera position for transition
-  const finalCameraPosition = new THREE.Vector3(-60, 6, 5);
 
   useFrame((state, delta) => {
-    const time = state.clock.getElapsedTime();
-    if (isAnimating) {
-      // Animate the book to its final position/rotation
+    if (isAnimating && bookRef.current) {
+      // Animate book position toward the center.
       bookRef.current.position.lerp(finalPosition, delta * 2);
-      bookRef.current.rotation.x = THREE.MathUtils.lerp(
-        bookRef.current.rotation.x,
-        finalRotation[0],
-        delta * 2
-      );
-      bookRef.current.rotation.y = THREE.MathUtils.lerp(
-        bookRef.current.rotation.y,
-        finalRotation[1],
-        delta * 2
-      );
-      bookRef.current.rotation.z = THREE.MathUtils.lerp(
-        bookRef.current.rotation.z,
-        finalRotation[2],
-        delta * 2
-      );
-
-      // Animate the camera to move
-      cameraRef.current.position.lerp(finalCameraPosition, delta * 1.5);
-
+      // Animate book rotation (if needed, but in your case rotation stays the same)
+      // bookRef.current.rotation.x = THREE.MathUtils.lerp(bookRef.current.rotation.x, finalRotation[0], delta * 2);
+      // bookRef.current.rotation.y = THREE.MathUtils.lerp(bookRef.current.rotation.y, finalRotation[1], delta * 2);
+      // bookRef.current.rotation.z = THREE.MathUtils.lerp(bookRef.current.rotation.z, finalRotation[2], delta * 2);
+      
+      // Animate book scale
+      bookRef.current.scale.lerp(finalScale, delta * 2);
+      
+      // Animate the camera to zoom in.
+      if (cameraRef && cameraRef.current) {
+        cameraRef.current.position.lerp(finalCameraPosition, delta * 2);
+        cameraRef.current.fov = THREE.MathUtils.lerp(cameraRef.current.fov, 15, delta * 2);
+        cameraRef.current.updateProjectionMatrix();
+        cameraRef.current.lookAt(bookRef.current.position);
+      }
+      
+      // Check if the book is close enough to the final position.
       if (bookRef.current.position.distanceTo(finalPosition) < 0.1) {
+        // Clamp the values exactly.
+        bookRef.current.position.copy(finalPosition);
+        bookRef.current.scale.copy(finalScale);
+        if (cameraRef && cameraRef.current) {
+          cameraRef.current.position.copy(finalCameraPosition);
+          cameraRef.current.fov = 15;
+          cameraRef.current.updateProjectionMatrix();
+        }
+        
+        // Stop the animation so it doesn't overshoot.
+        setIsAnimating(false);
+        // Trigger navigation.
         onClick();
       }
-    } else {
-      // Add a little up-and-down floating effect
-      bookRef.current.position.y += Math.sin(time * 3) * 1;
     }
   });
+  
 
   const handleClick = () => {
     setIsAnimating(true);
@@ -69,134 +83,16 @@ function BookModel({ onClick, cameraRef }) {
     <primitive
       ref={bookRef}
       object={scene}
-      scale={[1, 0.6, 1]}
-      position={initialPosition.current}
-      rotation={initialRotation.current}
+      // Keep the initial scale; it will be scaled during animation.
+      scale={new THREE.Vector3(...scaleVal)}
+      position={initialPosition}
+      rotation={initialRotation} // this remains unchanged
       onClick={handleClick}
       className="cursor-pointer"
     />
   );
 }
 
-function BookModel2({ onClick, cameraRef }) {
-  const { scene } = useGLTF('/compressed_book2.glb');
-  const bookRef = useRef();
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const initialPosition = useRef(new THREE.Vector3(335, -200, -300));
-  const finalPosition = new THREE.Vector3(60, -10, -5);
-
-  const initialRotation = useRef([Math.PI / 2, -Math.PI / 2.2, Math.PI / 2]);
-  const finalRotation = [Math.PI / 2, 0.1, Math.PI / 2 - 0.1];
-
-  const finalCameraPosition = new THREE.Vector3(-60, 6, 5);
-
-  useFrame((state, delta) => {
-    const time = state.clock.getElapsedTime();
-    if (isAnimating) {
-      bookRef.current.position.lerp(finalPosition, delta * 2);
-      bookRef.current.rotation.x = THREE.MathUtils.lerp(
-        bookRef.current.rotation.x,
-        finalRotation[0],
-        delta * 2
-      );
-      bookRef.current.rotation.y = THREE.MathUtils.lerp(
-        bookRef.current.rotation.y,
-        finalRotation[1],
-        delta * 2
-      );
-      bookRef.current.rotation.z = THREE.MathUtils.lerp(
-        bookRef.current.rotation.z,
-        finalRotation[2],
-        delta * 2
-      );
-      cameraRef.current.position.lerp(finalCameraPosition, delta * 1.5);
-
-      if (bookRef.current.position.distanceTo(finalPosition) < 0.1) {
-        onClick();
-      }
-    } else {
-      bookRef.current.position.y += Math.sin(time * 3) * 1;
-    }
-  });
-
-  const handleClick = () => {
-    setIsAnimating(true);
-  };
-
-  return (
-    <primitive
-      ref={bookRef}
-      object={scene}
-      scale={[1, 0.6, 0.8]}
-      position={initialPosition.current}
-      rotation={initialRotation.current}
-      onClick={handleClick}
-      className="cursor-pointer"
-    />
-  );
-}
-
-// // New third book component
-// function BookModel3({ onClick, cameraRef }) {
-//     const { scene } = useGLTF('/compressed_book2.glb'); // Ensure you have this model in your project
-//     const bookRef = useRef();
-//     const [isAnimating, setIsAnimating] = useState(false);
-  
-//     // Adjust initial and final positions/rotations as needed
-//     const initialPosition = useRef(new THREE.Vector3(300, -200, 200));
-//     const finalPosition = new THREE.Vector3(60, -10, -5);
-  
-//     const initialRotation = useRef([Math.PI / 2, -Math.PI / 2.3, Math.PI / 2]);
-//     const finalRotation = [Math.PI / 2, 0.1, Math.PI / 2 - 0.1];
-  
-//     const finalCameraPosition = new THREE.Vector3(-60, 6, 5);
-  
-//     useFrame((state, delta) => {
-//       const time = state.clock.getElapsedTime();
-//       if (isAnimating) {
-//         bookRef.current.position.lerp(finalPosition, delta * 2);
-//         bookRef.current.rotation.x = THREE.MathUtils.lerp(
-//           bookRef.current.rotation.x,
-//           finalRotation[0],
-//           delta * 2
-//         );
-//         bookRef.current.rotation.y = THREE.MathUtils.lerp(
-//           bookRef.current.rotation.y,
-//           finalRotation[1],
-//           delta * 2
-//         );
-//         bookRef.current.rotation.z = THREE.MathUtils.lerp(
-//           bookRef.current.rotation.z,
-//           finalRotation[2],
-//           delta * 2
-//         );
-//         cameraRef.current.position.lerp(finalCameraPosition, delta * 1.5);
-  
-//         if (bookRef.current.position.distanceTo(finalPosition) < 0.1) {
-//           onClick();
-//         }
-//       } else {
-//         bookRef.current.position.y += Math.sin(time * 3) * 1;
-//       }
-//     });
-  
-//     const handleClick = () => {
-//       setIsAnimating(true);
-//     };
-  
-//     return (
-//       <primitive
-//         ref={bookRef}
-//         object={scene}
-//         scale={[1, 0.6, 1]}
-//         position={initialPosition.current}
-//         rotation={initialRotation.current}
-//         onClick={handleClick}
-//         className="cursor-pointer"
-//       />
-//     );
-//   }
 
 // --- MenuPage Component ---
 function MenuPage() {
@@ -210,7 +106,7 @@ function MenuPage() {
     setFadeOut(true);
     setTimeout(() => {
       navigate(target);
-    }, 2700); // Delay to allow animation to finish
+    }, 2500); // Delay to allow animation to finish
   };
 
   // Fade-in effect on load
@@ -229,7 +125,7 @@ function MenuPage() {
         backgroundRepeat: 'no-repeat'
       }}
       >
-      <Carousel />
+      <Carousel/>
 
       {/* Title / Subheading */}
       <div className="text-center mb-4">
@@ -243,17 +139,48 @@ function MenuPage() {
       </div>
 
       {/* 3D Canvas with Book Models */}
-      <div className="flex-1 w-4/5 mx-auto mb-8">
+      <div style={{
+          position: 'fixed',
+          top: '30vh', // 30% down from the top
+          left: 0,
+          width: '100vw',
+          height: '70vh', // the remaining 70%
+          zIndex: 1 // adjust z-index if necessary to layer behind or in front of other content
+        }}>
         <Canvas
           className="w-full h-full"
-          camera={{ fov: 45, position: [-60, 40, 7] }}
+          camera={{ fov: 45, position: [0, 0, 470] }}
           onCreated={({ camera }) => (cameraRef.current = camera)}
           style={{ backgroundColor: 'transparent' }}
         >
           <ambientLight intensity={10} />
-          <BookModel onClick={() => handleBookClick('/timeline')} cameraRef={cameraRef} />
-          <BookModel2 onClick={() => handleBookClick('/places')} cameraRef={cameraRef} />
-          {/* <BookModel3 onClick={() => handleBookClick('/people')} cameraRef={cameraRef} /> */}
+          
+        {/*
+            Three books aligned horizontally near the bottom.
+            Adjust the position values as needed.
+          */}
+          <BookModel
+            gltfPath="/compressed_book1.glb"
+            onClick={() => handleBookClick('/timeline')}
+            initialPosition={[-200, -30, 0]}
+            initialRotation={[-17, 0, 0]}
+            scaleVal={[1, 0.1, 1]}
+          />
+          <BookModel
+            gltfPath="/compressed_book2.glb"
+            onClick={() => handleBookClick('/places')}
+            initialPosition={[0, -30, 0]}
+            initialRotation={[-17, 0, 0]}
+            scaleVal={[1, 0.1, 1]}
+          />
+          <BookModel
+            gltfPath="/compressed_book3.glb"
+            onClick={() => handleBookClick('/people')}
+            initialPosition={[200, -30, 0]}
+            initialRotation={[-17, 0, 0]}
+            scaleVal={[1, 0.1, 1]}
+          />
+
         </Canvas>
       </div>
 
@@ -266,6 +193,26 @@ function MenuPage() {
           //zIndex: -1, // Ensures the desk image is behind the rest of the content
         }}
       />
+
+      {/* Labels for the books */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '80px',      // Raised up from 20px to 80px
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center', // center them
+          gap: '210px',              // 20px gap between labels; adjust as needed
+          zIndex: 100,              // ensure they're on top
+          color: 'white',
+          fontSize: '1.5rem',
+          textShadow: '1px 1px 3px black'
+        }}
+      >
+        <span>Timeline</span>
+        <span>Places</span>
+        <span>People</span>
+      </div>
 
       {/* Fade overlays for transitions */}
       <div
@@ -283,315 +230,4 @@ function MenuPage() {
 }
 
 export default MenuPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // --- 3D Book Model Components ---
-// function BookModel({ onClick, cameraRef }) {
-//   const { scene } = useGLTF('/compressed_book.glb');
-//   const bookRef = useRef();
-//   const [isAnimating, setIsAnimating] = useState(false);
-
-//   // Book initial and final positions
-//   const initialPosition = useRef(new THREE.Vector3(370, -200, 110));
-//   const finalPosition = new THREE.Vector3(60, -10, -5);
-
-//   // Book initial and final rotations
-//   const initialRotation = useRef([Math.PI / 2, -Math.PI / 2, Math.PI / 2]);
-//   const finalRotation = [Math.PI / 2, 0.1, Math.PI / 2 - 0.1];
-
-//   // Final camera position for transition
-//   const finalCameraPosition = new THREE.Vector3(-60, 6, 5);
-
-//   useFrame((state, delta) => {
-//     const time = state.clock.getElapsedTime();
-//     if (isAnimating) {
-//       // Animate the book to its final position/rotation
-//       bookRef.current.position.lerp(finalPosition, delta * 2);
-//       bookRef.current.rotation.x = THREE.MathUtils.lerp(
-//         bookRef.current.rotation.x,
-//         finalRotation[0],
-//         delta * 2
-//       );
-//       bookRef.current.rotation.y = THREE.MathUtils.lerp(
-//         bookRef.current.rotation.y,
-//         finalRotation[1],
-//         delta * 2
-//       );
-//       bookRef.current.rotation.z = THREE.MathUtils.lerp(
-//         bookRef.current.rotation.z,
-//         finalRotation[2],
-//         delta * 2
-//       );
-
-//       // Animate the camera to move
-//       cameraRef.current.position.lerp(finalCameraPosition, delta * 1.5);
-
-//       if (bookRef.current.position.distanceTo(finalPosition) < 0.1) {
-//         onClick();
-//       }
-//     } else {
-//       // Add a little up-and-down floating effect
-//       bookRef.current.position.y += Math.sin(time * 3) * 1;
-//     }
-//   });
-
-//   const handleClick = () => {
-//     setIsAnimating(true);
-//   };
-
-//   return (
-//     <primitive
-//       ref={bookRef}
-//       object={scene}
-//       scale={[1, 0.6, 1]}
-//       position={initialPosition.current}
-//       rotation={initialRotation.current}
-//       onClick={handleClick}
-//       className="cursor-pointer"
-//     />
-//   );
-// }
-
-// function BookModel2({ onClick, cameraRef }) {
-//   const { scene } = useGLTF('/compressed_book2.glb');
-//   const bookRef = useRef();
-//   const [isAnimating, setIsAnimating] = useState(false);
-
-//   const initialPosition = useRef(new THREE.Vector3(335, -200, -300));
-//   const finalPosition = new THREE.Vector3(60, -10, -5);
-
-//   const initialRotation = useRef([Math.PI / 2, -Math.PI / 2.2, Math.PI / 2]);
-//   const finalRotation = [Math.PI / 2, 0.1, Math.PI / 2 - 0.1];
-
-//   const finalCameraPosition = new THREE.Vector3(-60, 6, 5);
-
-//   useFrame((state, delta) => {
-//     const time = state.clock.getElapsedTime();
-//     if (isAnimating) {
-//       bookRef.current.position.lerp(finalPosition, delta * 2);
-//       bookRef.current.rotation.x = THREE.MathUtils.lerp(
-//         bookRef.current.rotation.x,
-//         finalRotation[0],
-//         delta * 2
-//       );
-//       bookRef.current.rotation.y = THREE.MathUtils.lerp(
-//         bookRef.current.rotation.y,
-//         finalRotation[1],
-//         delta * 2
-//       );
-//       bookRef.current.rotation.z = THREE.MathUtils.lerp(
-//         bookRef.current.rotation.z,
-//         finalRotation[2],
-//         delta * 2
-//       );
-//       cameraRef.current.position.lerp(finalCameraPosition, delta * 1.5);
-
-//       if (bookRef.current.position.distanceTo(finalPosition) < 0.1) {
-//         onClick();
-//       }
-//     } else {
-//       bookRef.current.position.y += Math.sin(time * 3) * 1;
-//     }
-//   });
-
-//   const handleClick = () => {
-//     setIsAnimating(true);
-//   };
-
-//   return (
-//     <primitive
-//       ref={bookRef}
-//       object={scene}
-//       scale={[1, 0.6, 0.8]}
-//       position={initialPosition.current}
-//       rotation={initialRotation.current}
-//       onClick={handleClick}
-//       className="cursor-pointer"
-//     />
-//   );
-// }
-
-// // --- MenuPage Component ---
-// function MenuPage() {
-//   const [fade, setFade] = useState(true);
-//   const [fadeOut, setFadeOut] = useState(false);
-//   const navigate = useNavigate();
-//   const cameraRef = useRef();
-
-//   // Use this function to handle a book click and then navigate.
-//   const handleBookClick = (target) => {
-//     setFadeOut(true);
-//     setTimeout(() => {
-//       navigate(target);
-//     }, 2700); // Delay for transition animation
-//   };
-
-//   // Fade-in effect on load
-//   useEffect(() => {
-//     const timeout = setTimeout(() => setFade(false), 900);
-//     return () => clearTimeout(timeout);
-//   }, []);
-
-//   return (
-//     <div className="h-screen w-screen overflow-hidden bg-gray-900 text-white flex flex-col items-center">
-//       {/* Carousel/Slider Section */}
-//       <div className="h-3/6 w-4/5 flex items-center justify-center py-8 px-8">
-//         <img
-//           src={slide1}
-//           alt="Historic site"
-//           className="w-full h-full object-cover rounded-md shadow-lg"
-//         />
-//       </div>
-
-//       {/* Title / Subheading */}
-//       <div className="text-center mb-4">
-//         <p className="text-xl">
-//           Select a 360° experience above to explore a Mesa historical site
-//           <br />
-//           or 
-//           <br />
-//           select a book below to learn more about Mesa’s history
-//         </p>
-//       </div>
-
-//       {/* 3D Canvas with Book Models */}
-//       <div className="flex-1">
-//         <Canvas
-//           className="w-full h-full"
-//           camera={{ fov: 65, position: [-60, 20, 5] }}
-//           onCreated={({ camera }) => (cameraRef.current = camera)}
-//           style={{ backgroundColor: 'black' }}
-//         >
-//           <OrbitControls enableZoom={false} minPolarAngle={Math.PI / 3.5} />
-//           <ambientLight intensity={10} />
-//           {/* BookModel navigates to '/timeline' and BookModel2 to '/places'; adjust as needed */}
-//           <BookModel onClick={() => handleBookClick('/timeline')} cameraRef={cameraRef} />
-//           <BookModel2 onClick={() => handleBookClick('/places')} cameraRef={cameraRef} />
-//         </Canvas>
-//       </div>
-
-//       {/* Fade overlays for transitions */}
-//       <div
-//         className={`absolute inset-0 bg-black transition-opacity duration-[1000ms] ease-out ${
-//           fade ? 'opacity-100' : 'opacity-0'
-//         } pointer-events-none z-50`}
-//       />
-//       <div
-//         className={`absolute inset-0 bg-black transition-opacity duration-[2500ms] ease-out ${
-//           fadeOut ? 'opacity-100' : 'opacity-0'
-//         } pointer-events-none z-50`}
-//       />
-//     </div>
-//   );
-// }
-
-// export default MenuPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function MenuPage() {
-//   return (
-//     <div className = "h-screen w-screen overflow-hidden bg-gray-900 text-white flex flex-col items-center">
-//         {/* Carousel/Slider Section */}
-//         <div className="h-3/6 w-4/5 flex items-center justify-center py-8 px-8">
-//             {/* Replace this static image with your carousel component if needed */}
-//             <img
-//             src={slide1}
-//             alt="Historic site"
-//             className="w-full h-full object-cover rounded-md shadow-lg"
-//             />
-//         </div>
-
-//         {/* Title / Subheading */}
-//         <div className="text-center mb-8">
-//             <p className="text-xl">
-//             Select a 360° experience above to explore a Mesa historical site
-//             <br />
-//             OR 
-//             <br />
-//             select a book below to learn more about Mesa’s history
-//             </p>
-//         </div>
-
-//         {/* Book Options */}
-//         <div className="flex flex-wrap justify-center gap-8">
-//             <Link
-//             to="/timeline"
-//             className="flex flex-col items-center transform transition-transform hover:scale-105"
-//             >
-//             <img
-//                 src="/path/to/timeline-image.jpg"
-//                 alt="Timeline"
-//                 className="w-40 h-auto border-2 border-white mb-2 rounded"
-//             />
-//             <h3 className="text-xl">Timeline</h3>
-//             </Link>
-
-//             <Link
-//             to="/people"
-//             className="flex flex-col items-center transform transition-transform hover:scale-105"
-//             >
-//             <img
-//                 src="/path/to/people-image.jpg"
-//                 alt="People"
-//                 className="w-40 h-auto border-2 border-white mb-2 rounded"
-//             />
-//             <h3 className="text-xl">People</h3>
-//             </Link>
-
-//             <Link
-//             to="/places"
-//             className="flex flex-col items-center transform transition-transform hover:scale-105"
-//             >
-//             <img
-//                 src="/path/to/places-image.jpg"
-//                 alt="Places"
-//                 className="w-40 h-auto border-2 border-white mb-2 rounded"
-//             />
-//             <h3 className="text-xl">Places</h3>
-//             </Link>
-//         </div>
-//     </div>
-//   );
-// }
-
-// export default MenuPage;
 
