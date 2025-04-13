@@ -228,7 +228,6 @@ function MenuPage() {
         backgroundRepeat: 'no-repeat'
       }}
       >
-      
       <Carousel />
 
       {/* Title / Subheading */}

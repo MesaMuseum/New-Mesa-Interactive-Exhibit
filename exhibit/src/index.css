@@ -91,3 +91,29 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+.my-custom-slider {
+  height: 100% !important; 
+}
+
+.my-custom-slider .slick-list {
+  height: 100%; 
+}
+
+.my-custom-slider .slick-track {
+  height: 100%;
+}
+
+.my-custom-slider .slick-slide {
+  height: 100%;
+}
+
+.my-custom-slider .slick-slide > div {
+  height: 100%;
+}
+
+.my-custom-slider .slick-slide img {
+  height: 100%;
+  object-fit: cover; 
+}
