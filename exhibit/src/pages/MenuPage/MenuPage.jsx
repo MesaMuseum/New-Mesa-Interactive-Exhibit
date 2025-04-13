@@ -6,6 +6,7 @@ import { TextureLoader } from 'three';
 import { useNavigate, Link } from 'react-router-dom';
 import Carousel from './Carousel';
 import backgroundImg from '../../assets/MenuPage/menu_background.png';
+import deskImg from '../../assets/MenuPage/desk_menu.png';
 
 import slide1 from '/startingPage/slide1.jpg?url';
 
@@ -256,6 +257,16 @@ function MenuPage() {
           {/* <BookModel3 onClick={() => handleBookClick('/people')} cameraRef={cameraRef} /> */}
         </Canvas>
       </div>
+
+      {/* Desk Image as a Background Element at the Bottom */}
+      <div
+        className="absolute inset-x-0 bottom-4 h-[80%] bg-no-repeat bg-bottom z-0"
+        style={{
+          backgroundImage: `url(${deskImg})`,
+          backgroundSize: 'contain',
+          //zIndex: -1, // Ensures the desk image is behind the rest of the content
+        }}
+      />
 
       {/* Fade overlays for transitions */}
       <div
