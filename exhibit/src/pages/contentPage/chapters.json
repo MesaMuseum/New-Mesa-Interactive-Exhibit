@@ -2,6 +2,7 @@
     {
       "title_left_page": "Charles Crismon - I",
       "title_right_page": "Charles Crismon - II",
+      "date": "1943",
       "left_page_top_content": "Charles Crismon was a pioneer in the early settlement, contributing significantly to the foundation of this town. His work laid the groundwork for future developments and was pivotal in the growth of the community. ",
       "left_page_bottom_content": "Robson’s work extended beyond architecture; he was deeply involved in social services, helping to establish several local institutions that continue to serve the community.",
       "right_page_top_content": "In addition to his contributions to the town’s infrastructure, Crismon was known for his compassion and leadership. His legacy lives on through the many landmarks that bear his name.",
@@ -9,7 +10,7 @@
       "left_page_image": "path/to/charles_crismon_1.jpg",
       "right_page_image": "path/to/charles_crismon_2.jpg",
       "left_page_template_number": "TLBR",
-      "right_page_template_number": "TLBR",
+      "right_page_template_number": "TRBL",
       "question": "What is the capital of France?",
       "options": ["Berlin", "Madrid", "Paris", "Rome"],
       "answer": "Paris"
@@ -28,8 +29,8 @@
       "answer": "Robson"
     },
     {
-      "title_left_page": "Daniel Webster Jones - I",
-      "title_right_page": "Daniel Webster Jones - II",
+      "title_left_page": "Daniel Jones - I",
+      "title_right_page": "Daniel Jones - II",
       "left_page_content": "Daniel Webster Jones was a writer and explorer who documented numerous stories from the frontier. His work provides a valuable insight into the life and challenges of early settlers.",
       "right_page_content": "Jones’s writings are still studied by historians today. His accounts of interactions with Native American tribes and his explorations of unknown territories are particularly noteworthy.",
       "left_page_image": "path/to/daniel_webster_jones_1.jpg",

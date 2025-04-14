@@ -5,10 +5,13 @@ const TemplateCC = ({ title, topContent, bottomContent, imageUrl }) => {
   console.log("TemplateCC props:", { title, topContent, bottomContent, imageUrl })
 
   return (
-    <div className="w-[48%] flex flex-col p-6 rounded-lg">
-      <h3 className="text-3xl font-lovers font-bold text-black mb-4">
+    <div className="w-[48%] flex align-center flex-col p-4 rounded-lg">
+        <hr className="w-[80%] ml-auto mr-auto border-black mt-5"></hr>
+
+      <h3 className="text-7xl m-auto font-lovers font-bold text-black mb-1 mt-3">
         <AnimatedText text={title} />
       </h3>
+      <hr className="w-[80%] ml-auto mr-auto border-black mb-5"></hr>
       <div className="flex-1">
         <p className="text-base font-imfell text-black font-medium leading-relaxed mb-4">
           <AnimatedText text={topContent} />

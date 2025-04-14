@@ -5,7 +5,6 @@ import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
 import header from '/contentPage/header.png?url';
 import chapters from './chapters.json';
 import bookBackground from '/contentPage/Book_Page.png?url'
-import Typed from "typed.js";
 import CircleAnimation from "./header_circle";
 import PeopleMedia from "./people_media";
 import TemplateTRBL from './templates/template_TRBL';
@@ -135,13 +134,13 @@ const ContentPage = () => {
           </div>
 
           {/* Book & Interaction Section */}
-          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24 leading-6">
+          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24 leading-7">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
-              <div className="flex flex-row justify-between px-1 h-full pb-8">
+              <div className="flex flex-row justify-center gap-5 px-1 h-full pb-8 pl-3">
                 {/* Left Page */}
                 {renderTemplate(
                   selectedChapter?.left_page_template_number || "TC",
@@ -161,7 +160,7 @@ const ContentPage = () => {
                 )}
                 
                 {/* Previous and Next Buttons*/}
-                <div className="absolute bottom-5 left-6 text-xs">
+                <div className="absolute bottom-5 left-9 text-xs">
                   <img src="/prev_icon.png" onClick={goToPreviousChapter} className={`w-[30px] h-[30px] ${index === 0 ? 'opacity-50' : ''}`} ></img>
                 </div>
                 <div className="absolute bottom-6 right-6 text-xs">
@@ -207,8 +206,8 @@ const ContentPage = () => {
               </ul>
             </div>
           ) : (
-            <div className="h-full flex items-center justify-center pt-16 pl-4"> 
-              <div className="text-3xl font-lovers font-extrabold transform rotate-90 text-black">Contents</div>
+            <div className="h-full flex items-center justify-center pl-4"> 
+              <div className="text-5xl font-lovers font-extrabold transform rotate-90 text-black whitespace-nowrap pt-3">Table of Contents</div>
             </div>
           )}
         </div>
