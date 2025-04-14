@@ -1,0 +1,85 @@
+[
+  {
+    "title": "1878",
+    "content": "The first Mesa Canal Company was organized, marking the beginning of modern irrigation in Mesa. This vital infrastructure project laid the foundation for agricultural development in the region.",
+    "images": [
+      "/contentPage/timeline/1878_canal.jpg",
+      "/contentPage/timeline/1878_workers.jpg",
+      "/contentPage/timeline/1878_construction.jpg"
+    ]
+  },
+  {
+    "title": "1883",
+    "content": "Mesa City was officially incorporated, becoming the second incorporated town in the Salt River Valley. The city established its first local government and began developing public services.",
+    "images": [
+      "/contentPage/timeline/1883_cityHall.jpg",
+      "/contentPage/timeline/1883_downtown.jpg"
+    ]
+  },
+  {
+    "title": "1895",
+    "content": "The Mesa Free Press, the city's first newspaper, began publication. This marked an important milestone in Mesa's growth as a community and helped establish better communication among residents.",
+    "images": [
+      "/contentPage/timeline/1895_newspaper.jpg",
+      "/contentPage/timeline/1895_pressOffice.jpg"
+    ]
+  },
+  {
+    "title": "1917",
+    "content": "The completion of the Roosevelt Dam significantly improved Mesa's water security and agricultural potential. This project transformed the region's farming capabilities and supported population growth.",
+    "images": [
+      "/contentPage/timeline/1917_rooseveltDam.jpg",
+      "/contentPage/timeline/1917_construction.jpg",
+      "/contentPage/timeline/1917_workers.jpg"
+    ]
+  },
+  {
+    "title": "1940s",
+    "content": "During World War II, Falcon Field and Williams Air Force Base were established near Mesa. These military installations brought significant growth and economic development to the area.",
+    "images": [
+      "/contentPage/timeline/1940_falconField.jpg",
+      "/contentPage/timeline/1940_airbase.jpg"
+    ]
+  },
+  {
+    "title": "1950s",
+    "content": "Mesa experienced a post-war boom with rapid suburban growth. The city's population expanded significantly as new neighborhoods and businesses were developed.",
+    "images": [
+      "/contentPage/timeline/1950_suburban.jpg",
+      "/contentPage/timeline/1950_development.jpg"
+    ]
+  },
+  {
+    "title": "1960s",
+    "content": "Major infrastructure improvements were made throughout Mesa, including expanded roadways and public utilities. The city began to transform from a primarily agricultural community to a more diverse urban center.",
+    "images": [
+      "/contentPage/timeline/1960_roads.jpg",
+      "/contentPage/timeline/1960_infrastructure.jpg"
+    ]
+  },
+  {
+    "title": "1980s",
+    "content": "Mesa's technology sector began to grow with the arrival of several manufacturing companies. The city's economic base diversified beyond agriculture and tourism.",
+    "images": [
+      "/contentPage/timeline/1980_tech.jpg",
+      "/contentPage/timeline/1980_manufacturing.jpg"
+    ]
+  },
+  {
+    "title": "2000s",
+    "content": "The Light Rail system connected Mesa to the greater Phoenix metropolitan area, making the city more accessible and supporting further urban development.",
+    "images": [
+      "/contentPage/timeline/2000_lightrail.jpg",
+      "/contentPage/timeline/2000_station.jpg"
+    ]
+  },
+  {
+    "title": "Present",
+    "content": "Mesa continues to grow as Arizona's third-largest city, balancing its historical heritage with modern development. The city maintains its commitment to preserving its cultural landmarks while embracing future opportunities.",
+    "images": [
+      "/contentPage/timeline/present_skyline.jpg",
+      "/contentPage/timeline/present_downtown.jpg",
+      "/contentPage/timeline/present_culture.jpg"
+    ]
+  }
+]

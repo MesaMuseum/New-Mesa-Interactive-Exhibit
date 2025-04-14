@@ -19,6 +19,7 @@
     "react-router-dom": "^6.28.2",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
+    "tailwind-scrollbar": "^4.0.2",
     "three": "^0.172.0",
     "typed.js": "^2.1.0"
   },

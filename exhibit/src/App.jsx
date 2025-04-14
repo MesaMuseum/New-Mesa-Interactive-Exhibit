@@ -17,6 +17,7 @@ import Carousel_10 from "./pages/MenuPage/CarouselContent/carousel_10";
 import Carousel_11 from "./pages/MenuPage/CarouselContent/carousel_11";
 import Carousel_12 from "./pages/MenuPage/CarouselContent/carousel_12";
 
+import TimelinePage from "./pages/contentPage/timelinePage";
 import './index.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/room" element={<RoomPage />} />
         <Route path="/people" element={<PeoplePage />} />
         <Route path="/places" element={<PlacesPage />} />
+        <Route path="/timeline" element={<TimelinePage />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/carousel_1" element={<Carousel_1 />} />
         <Route path="/carousel_2" element={<Carousel_2 />} />
