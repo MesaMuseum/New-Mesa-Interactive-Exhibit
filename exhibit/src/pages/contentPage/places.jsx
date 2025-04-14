@@ -154,6 +154,16 @@ const PlacesPage = () => {
                   <CircleAnimation />
                 </div>
               </a>
+
+              <a 
+                href="/timeline"
+                className="font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative"
+              >
+                <div className="relative inline-block">
+                  Timeline
+                </div>
+              </a>
+
             </div>
           </div>
 

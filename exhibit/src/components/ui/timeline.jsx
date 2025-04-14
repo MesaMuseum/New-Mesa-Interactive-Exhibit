@@ -121,9 +121,6 @@ export const Timeline = ({ data }) => {
                           src={image}
                           alt={`Event from ${item.title}`}
                           className="w-full h-full object-cover rounded-lg"
-                          onError={(e) => {
-                            e.target.src = "/timeline/placeholder.jpg";
-                          }}
                         />
                       </div>
                     ))}
