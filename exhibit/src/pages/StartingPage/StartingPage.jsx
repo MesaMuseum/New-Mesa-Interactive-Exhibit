@@ -31,7 +31,7 @@ function StartingPage() {
 
     // Navigate to the next page after 1 second
     setTimeout(() => {
-      navigate('./room');
+      navigate('./menu');
     }, 1000);
   };
 
