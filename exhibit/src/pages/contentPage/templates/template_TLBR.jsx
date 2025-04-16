@@ -1,8 +1,8 @@
 import AnimatedText from "../animated-text.jsx"
 import "../../../styles/text-animation.css"
 
-const TemplateTLBR = ({ title, topContent, bottomContent, imageUrl }) => {
-  console.log("TemplateTLBR props:", { title, topContent, bottomContent, imageUrl })
+const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage }) => {
+  console.log("TemplateTLBR props:", { title, topContent, bottomContent, topImage, bottomImage })
 
   return (
     <div className="w-[48%] flex align-center flex-col p-4 rounded-lg">
@@ -15,7 +15,7 @@ const TemplateTLBR = ({ title, topContent, bottomContent, imageUrl }) => {
       <div className="flex flex-col">
         <div className="max-w-2xl mx-auto p-4 relative">
           <img
-            src={imageUrl || "/bookbg.jpeg"}
+            src={topImage}
             alt="Template Image"
             className="w-25 h-32 mr-5 mb-1 float-left bg-black"
             style={{
@@ -29,7 +29,7 @@ const TemplateTLBR = ({ title, topContent, bottomContent, imageUrl }) => {
         </div>
         <div className="max-w-2xl mx-auto p-4 relative">
           <img
-            src={imageUrl || "/bookbg.jpeg"}
+            src={bottomImage}
             alt="Template Image"
             className="w-25 h-32 mr-5 mb-4 float-right bg-black"
             style={{

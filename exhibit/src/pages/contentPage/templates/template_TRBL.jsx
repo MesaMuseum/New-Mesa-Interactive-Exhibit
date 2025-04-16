@@ -1,8 +1,8 @@
 import AnimatedText from "../animated-text.jsx"
 import "../../../styles/text-animation.css"
 
-const TemplateTRBL = ({ title, topContent, bottomContent, imageUrl }) => {
-  console.log("TemplateTRBL props:", { title, topContent, bottomContent, imageUrl })
+const TemplateTRBL = ({ title, topContent, bottomContent, topImage, bottomImage }) => {
+  console.log("TemplateTRBL props:", { title, topContent, bottomContent, topImage, bottomImage })
 
   return (
     <div className="w-[48%] flex align-center flex-col p-4 rounded-lg">
@@ -23,7 +23,7 @@ const TemplateTRBL = ({ title, topContent, bottomContent, imageUrl }) => {
           <div className="w-1/3 h-32 bg-gray-200/50 backdrop-blur-sm rounded-lg flex-shrink-0">
             {imageUrl && (
               <img
-                src={imageUrl || "/placeholder.svg"}
+                src={topImage}
                 alt="Template illustration"
                 className="w-full h-full object-contain"
               />
@@ -36,7 +36,7 @@ const TemplateTRBL = ({ title, topContent, bottomContent, imageUrl }) => {
           <div className="w-1/3 h-32 bg-gray-200/50 backdrop-blur-sm rounded-lg flex-shrink-0">
             {imageUrl && (
               <img
-                src={imageUrl || "/placeholder.svg"}
+                src={bottomImage}
                 alt="Template illustration"
                 className="w-full h-full object-contain"
               />

@@ -1,7 +1,7 @@
 import AnimatedText from "../animated-text.jsx"
 import "../../../styles/text-animation.css"
 
-const TemplateBC = ({ title, topContent, bottomContent, imageUrl }) => {
+const TemplateBC = ({ title, topContent, bottomContent, topImage, bottomImage }) => {
   return (
     <div className="w-[48%] flex align-center flex-col p-4 rounded-lg">
     <hr className="w-[80%] ml-auto mr-auto border-black mt-5"></hr>
@@ -21,7 +21,7 @@ const TemplateBC = ({ title, topContent, bottomContent, imageUrl }) => {
       <div className="w-full h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mx-auto">
         {imageUrl && (
           <img
-            src={imageUrl || "/placeholder.svg"}
+            src={topImage}
             alt="Template illustration"
             className="w-full h-full object-contain"
           />

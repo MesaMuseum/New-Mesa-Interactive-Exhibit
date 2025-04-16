@@ -1,8 +1,8 @@
 import AnimatedText from "../animated-text.jsx"
 import "../../../styles/text-animation.css"
 
-const TemplateCC = ({ title, topContent, bottomContent, imageUrl }) => {
-  console.log("TemplateCC props:", { title, topContent, bottomContent, imageUrl })
+const TemplateCC = ({ title, topContent, bottomContent, topImage, bottomImage }) => {
+  console.log("TemplateCC props:", { title, topContent, bottomContent, topImage, bottomImage })
 
   return (
     <div className="w-[48%] flex align-center flex-col p-4 rounded-lg">
@@ -20,7 +20,7 @@ const TemplateCC = ({ title, topContent, bottomContent, imageUrl }) => {
       <div className="w-2/3 h-48 bg-gray-200/50 backdrop-blur-sm rounded-lg mx-auto mb-4">
         {imageUrl && (
           <img
-            src={imageUrl || "/placeholder.svg"}
+            src={topImage}
             alt="Template illustration"
             className="w-full h-full object-contain"
           />

@@ -58,12 +58,13 @@ const ContentPage = () => {
   };
 
 
-  const renderTemplate = (templateNumber, title, topContent, bottomContent, imageUrl) => {
+  const renderTemplate = (templateNumber, title, topContent, bottomContent, topImage, bottomImage) => {
     const props = {
       title,
       topContent,
       bottomContent,
-      imageUrl,
+      topImage,
+      bottomImage,
     }
 
     switch (templateNumber) {
@@ -147,7 +148,8 @@ const ContentPage = () => {
                   selectedChapter?.title_left_page || "",
                   selectedChapter?.left_page_top_content || "",
                   selectedChapter?.left_page_bottom_content || "",
-                  selectedChapter?.left_page_image,
+                  selectedChapter?.left_page_top_image,
+                  selectedChapter?.left_page_bottom_image,
                 )}
 
                 {/* Right Page */}
@@ -156,7 +158,8 @@ const ContentPage = () => {
                   selectedChapter?.title_right_page || "",
                   selectedChapter?.right_page_top_content || "",
                   selectedChapter?.right_page_bottom_content || "",
-                  selectedChapter?.right_page_image,
+                  selectedChapter?.right_page_top_image,
+                  selectedChapter?.right_page_bottom_image,
                 )}
                 
                 {/* Previous and Next Buttons*/}
