@@ -106,7 +106,7 @@ function MenuPage() {
     setFadeOut(true);
     setTimeout(() => {
       navigate(target);
-    }, 2500); // Delay to allow animation to finish
+    }, 2000); // Delay to allow animation to finish
   };
 
   // Fade-in effect on load
@@ -161,7 +161,7 @@ function MenuPage() {
           */}
           <BookModel
             gltfPath="/compressed_book1.glb"
-            onClick={() => handleBookClick('/timeline')}
+            onClick={() => handleBookClick('/people')}
             initialPosition={[-200, -30, 0]}
             initialRotation={[-17, 0, 0]}
             scaleVal={[1, 0.1, 1]}
@@ -175,7 +175,7 @@ function MenuPage() {
           />
           <BookModel
             gltfPath="/compressed_book3.glb"
-            onClick={() => handleBookClick('/people')}
+            onClick={() => handleBookClick('/timeline')}
             initialPosition={[200, -30, 0]}
             initialRotation={[-17, 0, 0]}
             scaleVal={[1, 0.1, 1]}
@@ -209,9 +209,9 @@ function MenuPage() {
           textShadow: '1px 1px 3px black'
         }}
       >
-        <span>Timeline</span>
-        <span>Places</span>
         <span>People</span>
+        <span>Places</span>
+        <span>Timeline</span>
       </div>
 
       {/* Fade overlays for transitions */}
@@ -221,7 +221,7 @@ function MenuPage() {
         } pointer-events-none z-50`}
       />
       <div
-        className={`absolute inset-0 bg-black transition-opacity duration-[2500ms] ease-out ${
+        className={`absolute inset-0 bg-black transition-opacity duration-[1000ms] ease-out ${
           fadeOut ? 'opacity-100' : 'opacity-0'
         } pointer-events-none z-50`}
       />
