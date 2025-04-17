@@ -95,6 +95,7 @@ button:focus-visible {
 
 .my-custom-slider {
   height: 100% !important; 
+  z-index: 5;
 }
 
 .my-custom-slider .slick-list {
