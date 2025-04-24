@@ -12,8 +12,8 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
         <AnimatedText text={title} />
       </h3>
       <hr className="w-[80%] ml-auto mr-auto border-black mb-5"></hr>
-      <div className="flex flex-col">
-        <div className="max-w-2xl mx-auto p-4 relative">
+      <div className="border flex flex-col">
+        <div className="border max-w-2xl mx-auto p-4 pb-1 relative">
           <img
             src={topImage}
             alt="Template Image"
@@ -27,7 +27,7 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
             <AnimatedText text={topContent}/>
           </p>
         </div>
-        <div className="max-w-2xl mx-auto p-4 relative">
+        <div className="border max-w-2xl mx-auto p-4 relative">
           <img
             src={bottomImage}
             alt="Template Image"
