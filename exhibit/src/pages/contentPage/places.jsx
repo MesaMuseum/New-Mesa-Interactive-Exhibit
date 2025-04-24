@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import backgroundImage from '/contentPage/Desk_Background.png?url'; 
 import sideImageDefault from '/contentPage/Contents_Sidebar_Minimized.png?url';
 import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
@@ -19,7 +20,6 @@ const PlacesPage = () => {
   const [selectedChapter, setSelectedChapter] = useState(chapters[0]); 
   const sidebarRef = useRef(null);
   const [index, setIndex] = useState(0);
-
 
   const goToPreviousChapter = () => {
     if (index > 0) {
@@ -101,34 +101,33 @@ const PlacesPage = () => {
             }}
           >
             <div className="w-full flex justify-between pb-4 px-24 pr-48">
-              <a 
-                href="/people" 
+              <Link 
+                to="/people" 
                 className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
                 <div className="relative inline-block">
                   People
                 </div>
-              </a>
+              </Link>
               
-              <a 
-                href="/places" 
+              <Link 
+                to="/places" 
                 className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
                 <div className="relative inline-block">
                   Places
                   <CircleAnimation />
                 </div>
-              </a>
+              </Link>
 
-              <a 
-                href="/timeline"
+              <Link 
+                to="/timeline"
                 className="font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative"
               >
                 <div className="relative inline-block">
                   Timeline
                 </div>
-              </a>
-
+              </Link>
             </div>
           </div>
 

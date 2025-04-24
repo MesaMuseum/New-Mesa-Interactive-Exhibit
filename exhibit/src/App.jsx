@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MusicPlayer from './components/MusicPlayer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StartingPage from "./pages/StartingPage/StartingPage";
 import RoomPage from "./pages/RoomPage/RoomPage"; 
 import PeoplePage from "./pages/contentPage/people";
@@ -22,28 +23,31 @@ import './index.css';
 
 function App() {
   return (
-    <Router> 
-      <Routes>
-        <Route path="/" element={<StartingPage />} />
-        <Route path="/room" element={<RoomPage />} />
-        <Route path="/people" element={<PeoplePage />} />
-        <Route path="/places" element={<PlacesPage />} />
-        <Route path="/timeline" element={<TimelinePage />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/carousel_1" element={<Carousel_1 />} />
-        <Route path="/carousel_2" element={<Carousel_2 />} />
-        <Route path="/carousel_3" element={<Carousel_3 />} />
-        <Route path="/carousel_4" element={<Carousel_4 />} />
-        <Route path="/carousel_5" element={<Carousel_5 />} />
-        <Route path="/carousel_6" element={<Carousel_6 />} />
-        <Route path="/carousel_7" element={<Carousel_7 />} />
-        <Route path="/carousel_8" element={<Carousel_8 />} />
-        <Route path="/carousel_9" element={<Carousel_9 />} />
-        <Route path="/carousel_10" element={<Carousel_10 />} />
-        <Route path="/carousel_11" element={<Carousel_11 />} />
-        <Route path="/carousel_12" element={<Carousel_12 />} />
-      </Routes>
-    </Router>
+    <>
+      <MusicPlayer />
+      <Router>
+        <Routes>
+          <Route path="/" element={<StartingPage />} />
+          <Route path="/room" element={<RoomPage />} />
+          <Route path="/people" element={<PeoplePage />} />
+          <Route path="/places" element={<PlacesPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/carousel_1" element={<Carousel_1 />} />
+          <Route path="/carousel_2" element={<Carousel_2 />} />
+          <Route path="/carousel_3" element={<Carousel_3 />} />
+          <Route path="/carousel_4" element={<Carousel_4 />} />
+          <Route path="/carousel_5" element={<Carousel_5 />} />
+          <Route path="/carousel_6" element={<Carousel_6 />} />
+          <Route path="/carousel_7" element={<Carousel_7 />} />
+          <Route path="/carousel_8" element={<Carousel_8 />} />
+          <Route path="/carousel_9" element={<Carousel_9 />} />
+          <Route path="/carousel_10" element={<Carousel_10 />} />
+          <Route path="/carousel_11" element={<Carousel_11 />} />
+          <Route path="/carousel_12" element={<Carousel_12 />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

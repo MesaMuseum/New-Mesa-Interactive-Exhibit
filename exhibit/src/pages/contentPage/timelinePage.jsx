@@ -1,4 +1,5 @@
 import { Timeline } from '../../components/ui/timeline';
+import { Link } from "react-router-dom"; 
 import backgroundImage from '/contentPage/Desk_Background.png?url'; 
 import header from '/contentPage/header.png?url';
 import CircleAnimation from "./header_circle";
@@ -23,33 +24,33 @@ const TimelinePage = () => {
           }}
         >
           <div className="w-full flex justify-between pb-4 px-24 pr-48">
-            <a 
-              href="/people" 
+            <Link 
+              to="/people" 
               className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
             >
               <div className="relative inline-block">
                 People
               </div>
-            </a>
+            </Link>
             
-            <a 
-              href="/places"
+            <Link 
+              to="/places"
               className="font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative"
             >
               <div className="relative inline-block">
                 Places
               </div>
-            </a>
+            </Link>
 
-            <a 
-              href="/timeline"
+            <Link 
+              to="/timeline"
               className="font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative"
             >
               <div className="relative inline-block">
                 Timeline
                 <CircleAnimation />
               </div>
-            </a>
+            </Link>
           </div>
         </div>
 

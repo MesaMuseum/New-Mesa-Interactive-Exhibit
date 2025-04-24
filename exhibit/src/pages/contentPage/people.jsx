@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import backgroundImage from '/contentPage/Desk_Background.png?url'; 
 import sideImageDefault from '/contentPage/Contents_Sidebar_Minimized.png?url';
 import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
@@ -102,46 +103,43 @@ const ContentPage = () => {
             }}
           >
             <div className="w-full flex justify-between pb-4 px-24 pr-48">
-              <a 
-                href="/people" 
+=              <Link 
+                to="/people" 
                 className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
                 <div className="relative inline-block">
                   People
                   <CircleAnimation />
                 </div>
-              </a>
+              </Link>
               
-              <a 
-                href="/places" 
+              <Link 
+                to="/places" 
                 className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
                 <div className="relative inline-block">
                   Places
                 </div>
-              </a>
+              </Link>
 
-              
-              <a 
-                href="/timeline"
+              <Link 
+                to="/timeline"
                 className="font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative"
               >
                 <div className="relative inline-block">
                   Timeline
                 </div>
-              </a>
-
+              </Link>
             </div>
           </div>
-
-          {/* Book & Interaction Section */}
-          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24 leading-5">
+          
+=          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24 leading-5">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
-              <div className="border flex flex-row justify-center gap-3 px-1 h-full pb-8 pl-3">
+              <div className="flex flex-row justify-center gap-3 px-1 h-full pb-8 pl-3">
                 {/* Left Page */}
                 {renderTemplate(
                   selectedChapter?.left_page_template_number || "TC",
@@ -216,7 +214,6 @@ const ContentPage = () => {
         </div>
       </div>
 
-      {/* Add SVG filter for grainy effect */}
       <svg className="hidden">
         <filter id="grainy">
           <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" />

@@ -67,17 +67,58 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Add these new styles */
 .sidebar-overlay {
   transition: all 0.3s ease-in-out;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Ensure content below sidebar is accessible */
 .main-content {
   position: relative;
   z-index: 1;
 }
+
+.music-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.music-toggle:hover {
+  background-color: transparent;
+}
+
+.music-toggle .material-icons {
+  font-size: 28px;
+  color: #f5f5dc;
+  transition: transform 0.3s ease;
+}
+
+.music-toggle:hover .material-icons {
+  transform: scale(1.2);
+  color: #fffdd0;
+}
+
+/* Animation when toggling */
+@keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.music-toggle .material-icons {
+  animation: pop 0.4s ease;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
