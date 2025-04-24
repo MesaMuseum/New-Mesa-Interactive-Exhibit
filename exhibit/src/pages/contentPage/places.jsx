@@ -92,7 +92,7 @@ const PlacesPage = () => {
         <div className="h-full flex flex-col flex-grow overflow-hidden"> 
           {/* Header */}
           <div 
-            className="w-[50%] h-[15%] flex items-center justify-center relative"
+            className="w-[50%] h-[10%] flex items-center justify-center relative"
             style={{ 
               backgroundImage: `url(${header})`,
               backgroundSize: '100% 100%',
