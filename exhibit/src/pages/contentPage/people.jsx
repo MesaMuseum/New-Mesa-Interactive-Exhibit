@@ -3,7 +3,7 @@ import backgroundImage from '/contentPage/Desk_Background.png?url';
 import sideImageDefault from '/contentPage/Contents_Sidebar_Minimized.png?url';
 import sideImageHover from '/contentPage/Contents_Sidebar_Expanded.png?url';
 import header from '/contentPage/header.png?url';
-import chapters from './chapters.json';
+import chapters from './people.json';
 import bookBackground from '/contentPage/Book_Page.png?url'
 import CircleAnimation from "./header_circle";
 import PeopleMedia from "./people_media";
