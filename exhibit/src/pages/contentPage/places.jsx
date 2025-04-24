@@ -57,12 +57,13 @@ const PlacesPage = () => {
     setSelectedChapter(selectedChapter);
   };
 
-  const renderTemplate = (templateNumber, title, topContent, bottomContent, imageUrl) => {
+  const renderTemplate = (templateNumber, title, topContent, bottomContent, topImage, bottomImage) => {
     const props = {
       title,
       topContent,
       bottomContent,
-      imageUrl,
+      topImage,
+      bottomImage,
     }
 
     switch (templateNumber) {
@@ -139,13 +140,15 @@ const PlacesPage = () => {
               
               {/* Book Pages Container */}
               <div className="flex flex-row justify-between px-8 h-full pb-8">
+                
                 {/* Left Page */}
                 {renderTemplate(
                   selectedChapter?.left_page_template_number || "TC",
                   selectedChapter?.title_left_page || "",
                   selectedChapter?.left_page_top_content || "",
                   selectedChapter?.left_page_bottom_content || "",
-                  selectedChapter?.left_page_image,
+                  selectedChapter?.left_page_top_image,
+                  selectedChapter?.left_page_bottom_image,
                 )}
 
                 {/* Right Page */}
@@ -154,9 +157,10 @@ const PlacesPage = () => {
                   selectedChapter?.title_right_page || "",
                   selectedChapter?.right_page_top_content || "",
                   selectedChapter?.right_page_bottom_content || "",
-                  selectedChapter?.right_page_image,
+                  selectedChapter?.right_page_top_image,
+                  selectedChapter?.right_page_bottom_image,
                 )}
-                
+
                 {/* Previous and Next Buttons*/}
                 <div className="absolute bottom-5 left-6 text-xs">
                   <img src="/prev_icon.png" onClick={goToPreviousChapter} className={`w-[30px] h-[30px] ${index === 0 ? 'opacity-50' : ''}`} ></img>
