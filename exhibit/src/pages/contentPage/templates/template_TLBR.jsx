@@ -8,7 +8,7 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
     <div className="w-[48%] flex align-center flex-col p-4 rounded-lg">
         <hr className="w-[80%] ml-auto mr-auto border-black mt-5"></hr>
 
-      <h3 className="text-7xl m-auto font-lovers font-bold text-black mb-1 mt-3">
+      <h3 className="text-8xl m-auto font-lovers font-bold text-black mb-1 mt-3">
         <AnimatedText text={title} />
       </h3>
       <hr className="w-[80%] ml-auto mr-auto border-black mb-5"></hr>
@@ -23,7 +23,7 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
               margin: "0 16px 10px 0",
             }}
           />
-          <p className="text-gray-700">
+          <p className="text-gray-700 text-lg">
             <AnimatedText text={topContent}/>
           </p>
         </div>
@@ -37,7 +37,7 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
               margin: "16px 16px 16px 16px",
             }}
           />
-          <p className="text-gray-700">
+          <p className="text-gray-700 text-lg">
             <AnimatedText text={bottomContent} />
           </p>
         </div>
