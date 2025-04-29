@@ -5,7 +5,7 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
   console.log("TemplateTLBR props:", { title, topContent, bottomContent, topImage, bottomImage })
 
   return (
-    <div className="w-[48%] flex align-center flex-col p-4 rounded-lg">
+    <div className="w-[48%] flex align-center flex-col p-4 rounded-lg pt-6">
         <hr className="w-[80%] ml-auto mr-auto border-black mt-5"></hr>
 
       <h3 className="text-8xl m-auto font-lovers font-bold text-black mb-1 mt-3">

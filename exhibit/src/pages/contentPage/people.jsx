@@ -161,10 +161,10 @@ const ContentPage = () => {
                 )}
                 
                 {/* Previous and Next Buttons*/}
-                <div className="absolute bottom-5 left-9 text-xs">
+                <div className="border absolute bottom-10 left-9 text-xs">
                   <img src="/prev_icon.png" onClick={goToPreviousChapter} className={`w-[30px] h-[30px] ${index === 0 ? 'opacity-50' : ''}`} ></img>
                 </div>
-                <div className="absolute bottom-6 right-6 text-xs">
+                <div className="absolute bottom-10 right-6 text-xs">
                   <img src="/next_icon.png" onClick={goToNextChapter} className={`w-[30px] h-[30px] ${index === chapters.length - 1 ? 'opacity-50' : ''}`} ></img>
                 </div>
               </div>
@@ -190,15 +190,15 @@ const ContentPage = () => {
         >
           {isSidebarExpanded ? (
             <div 
-              className="h-full flex flex-col text-black pt-16 pl-12 overflow-y-auto"
+              className="h-full flex flex-col text-black pt-16 pl-15 overflow-y-auto"
               onClick={e => e.stopPropagation()}
             >
-              <h3 className="text-4xl font-lovers font-extrabold mb-4">Navigate</h3>
+              <h3 className="text-7xl font-lovers font-extrabold mb-4 pl-7">Table of Contents</h3>
               <ul className="space-y-3 text-base font-imfell">
                 {chapters.map((chapter, index) => (
                   <li 
                     key={index} 
-                    className="cursor-pointer hover:text-blue-600"
+                    className="text-2xl cursor-pointer hover:text-blue-600 leading-12"
                     onClick={() => handleClick(index, chapter)}
                   >
                     {chapter.title_left_page}
