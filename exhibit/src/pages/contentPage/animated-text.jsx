@@ -7,14 +7,15 @@ const AnimatedText = ({ text, className = "" }) => {
 
   useEffect(() => {
     if (!containerRef.current) return
-
-    // Get all span elements
+  
     const spans = containerRef.current.querySelectorAll(".animated-word")
-
-    // Set animation delay for each span based on its index
+  
+    const globalDelay = 1000 // <<<< 🎯 Adjust this to delay the start of animation (in ms)
+  
     spans.forEach((span, index) => {
-      const delay = (index * 0.1).toFixed(1) // 0.1s delay between each word
-      span.style.setProperty("--animation-delay", `${delay}s`)
+      const wordDelay = index * 0.1
+      const totalDelay = globalDelay / 1000 + wordDelay
+      span.style.setProperty("--animation-delay", `${totalDelay}s`)
     })
   }, [text])
 
