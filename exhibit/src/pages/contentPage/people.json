@@ -27,8 +27,8 @@
     "left_page_bottom_image": "/peopleImages/charlesRobson/2009044019.JPG",
     "right_page_top_image": "/peopleImages/charlesRobson/2009044019.JPG",
     "right_page_bottom_image": "/peopleImages/charlesRobson/2009044019.JPG",
-    "left_page_template_number": "TLBR",
-    "right_page_template_number": "TLBR",
+    "left_page_template_number": "CC",
+    "right_page_template_number": "CC",
     "question": "What is the capital of France?",
     "options": ["Berlin", "Madrid", "Paris", "Rome"],
     "answer": "Paris"
@@ -61,8 +61,8 @@
     "left_page_bottom_image": "/peopleImages/FrancisPomeroy/House.JPG",
     "right_page_top_image": "/peopleImages/FrancisPomeroy/2012999 002X.JPG",
     "right_page_bottom_image": "/peopleImages/FrancisPomeroy/House.JPG",
-    "left_page_template_number": "TLBR",
-    "right_page_template_number": "TLBR",
+    "left_page_template_number": "CC",
+    "right_page_template_number": "CC",
     "question": "What is the capital of France?",
     "options": ["Berlin", "Madrid", "Paris", "Rome"],
     "answer": "Paris"

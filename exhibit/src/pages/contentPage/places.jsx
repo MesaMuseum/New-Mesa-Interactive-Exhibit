@@ -76,7 +76,14 @@ const PlacesPage = () => {
       case "CC":
         return <TemplateCC {...props} />
       case "TLBR":
-        return <TemplateTLBR {...props} />
+        return <TemplateTLBR
+        key={title + topContent + bottomContent + topImage + bottomImage}
+        title={title}
+        topContent={topContent}
+        bottomContent={bottomContent}
+        topImage={topImage}
+        bottomImage={bottomImage}
+      />
       default:
         return <TemplateTC {...props} />
     }

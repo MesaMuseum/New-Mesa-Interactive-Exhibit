@@ -16,6 +16,14 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
   const [delayedTopImage, setDelayedTopImage] = useState(null)
   const [delayedBottomImage, setDelayedBottomImage] = useState(null)
 
+  const [frozenHeight, setFrozenHeight] = useState(null)
+
+  const topSectionRef = useRef(null)
+const bottomSectionRef = useRef(null)
+
+const [frozenTopHeight, setFrozenTopHeight] = useState(null)
+const [frozenBottomHeight, setFrozenBottomHeight] = useState(null)
+
   const topTextRef = useRef(null)
   const bottomTextRef = useRef(null)
   const containerRef = useRef(null)
@@ -40,19 +48,48 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
   }, [])
 
   useEffect(() => {
+    if (contentRef.current) {
+      const measuredHeight = contentRef.current.offsetHeight
+      setFrozenHeight(measuredHeight)
+    }
+
+    if (topSectionRef.current) {
+      setFrozenTopHeight(topSectionRef.current.offsetHeight)
+    }
+    if (bottomSectionRef.current) {
+      setFrozenBottomHeight(bottomSectionRef.current.offsetHeight)
+    }
     // Fade out content and images
     setContentVisible(false)
     setImagesVisible(false)
+
+      // Schedule freezing of height on next frame (after DOM updates)
+  const frame = requestAnimationFrame(() => {
+    if (contentRef.current) {
+      setFrozenHeight(contentRef.current.offsetHeight)
+    }
+    if (topSectionRef.current) {
+      setFrozenTopHeight(topSectionRef.current.offsetHeight)
+    }
+    if (bottomSectionRef.current) {
+      setFrozenBottomHeight(bottomSectionRef.current.offsetHeight)
+    }
+  })
   
     // Delay before loading new images
     const timer = setTimeout(() => {
       // After fade-out, update delayed images
+
       setDelayedTopImage(topImage)
       setDelayedBottomImage(bottomImage)
   
       // Start calculating layout with the new images
       setIsCalculating(true)
       loadImages(topImage, bottomImage)
+
+      setFrozenHeight(null)
+      setFrozenTopHeight(null)
+      setFrozenBottomHeight(null)
     }, 500) // match your fade-out duration
   
     return () => clearTimeout(timer)
@@ -209,6 +246,7 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
           // Delay showing images until content is visible
           setTimeout(() => {
             setImagesVisible(true)
+
           }, 500) // 500ms delay before showing images
         }
       }, 100)
@@ -242,11 +280,17 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
         style={{
           minHeight: "200px",
           maxHeight: `${targetMaxHeight}px`,
+          height: frozenHeight !== null ? `${frozenHeight}px` : "auto",
           overflow: "visible",
           opacity: contentVisible ? 1 : 0,
         }}
       >
-        <div className="p-4 pb-1 relative">
+        <div className="border p-4 pb-1 relative"
+          ref={topSectionRef}
+          style={{
+            height: frozenTopHeight !== null ? `${frozenTopHeight}px` : "auto",
+            transition: "height 0.3s ease", // Optional
+          }}>
           {topImage && (
             <img
               ref={topImageRef}
@@ -268,7 +312,12 @@ const TemplateTLBR = ({ title, topContent, bottomContent, topImage, bottomImage 
           </p>
         </div>
 
-        <div className="p-4 relative">
+        <div className="border p-4 relative"
+          ref={bottomSectionRef}
+          style={{
+            height: frozenBottomHeight !== null ? `${frozenBottomHeight}px` : "auto",
+            transition: "height 0.3s ease", // Optional
+          }}>
           {bottomImage && bottomContent && bottomContent.trim().length > 0 && (
             <img
               ref={bottomImageRef}
