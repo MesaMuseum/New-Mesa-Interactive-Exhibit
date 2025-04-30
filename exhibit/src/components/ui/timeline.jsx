@@ -92,7 +92,7 @@ export const Timeline = ({ data }) => {
               <motion.h3
                 initial={{ opacity: 1 }}
                 style={{ opacity: opacityTransform }}
-                className="hidden md:block text-xl md:pl-20 md:text-5xl font-lovers text-white"
+                className="hidden md:block text-xl md:pl-20 md:text-8xl font-lovers text-white"
               >
                 {item.title}
               </motion.h3>
