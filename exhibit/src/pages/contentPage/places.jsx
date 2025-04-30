@@ -99,7 +99,7 @@ const PlacesPage = () => {
         <div className="h-full flex flex-col flex-grow overflow-hidden"> 
           {/* Header */}
           <div 
-            className="border w-[50%] h-[10%] flex items-center justify-center relative"
+            className="w-[50%] h-[10%] flex items-center justify-center relative"
             style={{ 
               backgroundImage: `url(${header})`,
               backgroundSize: '100% 100%',
@@ -139,7 +139,7 @@ const PlacesPage = () => {
           </div>
 
           {/* Book & Interaction Section */}
-          <div className="border flex flex-1 items-center justify-between gap-6 px-6 pr-24">
+          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
