@@ -78,6 +78,7 @@ const ContentPage = () => {
         topImage={topImage}
         bottomImage={bottomImage}
       />
+/*         return <TemplateTRBL {...props} /> */
       case "BC":
         return <TemplateBC
         key={title + topContent + bottomContent + topImage + bottomImage}
@@ -87,6 +88,7 @@ const ContentPage = () => {
         topImage={topImage}
         bottomImage={bottomImage}
       />
+/*         return <TemplateBC {...props} /> */
       case "TC":
         return <TemplateTC {...props} />
       case "CC":
@@ -98,18 +100,27 @@ const ContentPage = () => {
         topImage={topImage}
         bottomImage={bottomImage}
       />
+/*       return <TemplateCC {...props} /> */
       case "TLBR":
-/*         return <TemplateTLBR
+        return <TemplateTLBR
         key={title + topContent + bottomContent + topImage + bottomImage}
         title={title}
         topContent={topContent}
         bottomContent={bottomContent}
         topImage={topImage}
         bottomImage={bottomImage}
-      /> */
-      return <TemplateTLBR {...props} />
+      />
+/*       return <TemplateTLBR {...props} /> */
       default:
-        return <TemplateTC {...props} />
+/*         return <TemplateTC {...props} /> */
+        return <TemplateTC
+        key={title + topContent + bottomContent + topImage + bottomImage}
+        title={title}
+        topContent={topContent}
+        bottomContent={bottomContent}
+        topImage={topImage}
+        bottomImage={bottomImage}
+      />
     }
   }
 
@@ -163,13 +174,13 @@ const ContentPage = () => {
           </div>
           
           {/* Book & Interaction Section */}
-=          <div className="border flex flex-1 items-center justify-between gap-6 px-6 pr-24">
+          <div className="border flex flex-1 items-center justify-between gap-6 px-6 pr-24">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
-              <div className="flex flex-row justify-center px-1 h-full pb-8 ">
+              <div className="flex flex-row justify-center px-1 h-full pb-8 gap-4">
                 {/* Left Page */}
                 {renderTemplate(
                   selectedChapter?.left_page_template_number || "TC",

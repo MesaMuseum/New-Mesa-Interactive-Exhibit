@@ -277,7 +277,7 @@ const TemplateTRBL = ({ title, topContent, bottomContent, topImage, bottomImage 
 
       <div
         ref={contentRef}
-        className="border flex flex-col space-y-4 transition-opacity duration-500"
+        className="flex flex-col space-y-4 transition-opacity duration-500"
         style={{
           minHeight: "200px",
           maxHeight: `${targetMaxHeight}px`,
@@ -288,7 +288,7 @@ const TemplateTRBL = ({ title, topContent, bottomContent, topImage, bottomImage 
       >
         {/* Top section with right image */}
         <div
-          className="border flex gap-4 p-4"
+          className="flex gap-4 p-4"
           ref={topSectionRef}
           style={{
             height: frozenTopHeight !== null ? `${frozenTopHeight}px` : "auto",
@@ -321,7 +321,7 @@ const TemplateTRBL = ({ title, topContent, bottomContent, topImage, bottomImage 
 
         {/* Bottom section with left image */}
         <div
-          className="border flex gap-4"
+          className="flex gap-4"
           ref={bottomSectionRef}
           style={{
             height: frozenBottomHeight !== null ? `${frozenBottomHeight}px` : "auto",

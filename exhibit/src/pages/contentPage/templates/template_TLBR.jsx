@@ -90,7 +90,7 @@ const [frozenBottomHeight, setFrozenBottomHeight] = useState(null)
       setFrozenHeight(null)
       setFrozenTopHeight(null)
       setFrozenBottomHeight(null)
-    }, 500) // match your fade-out duration
+    }, 1000) // match your fade-out duration
   
     return () => clearTimeout(timer)
   }, [title, topContent, bottomContent, topImage, bottomImage])
@@ -285,7 +285,7 @@ const [frozenBottomHeight, setFrozenBottomHeight] = useState(null)
           opacity: contentVisible ? 1 : 0,
         }}
       >
-        <div className="border p-4 pb-1 relative"
+        <div className="p-4 pb-1 relative"
           ref={topSectionRef}
           style={{
             height: frozenTopHeight !== null ? `${frozenTopHeight}px` : "auto",
@@ -312,7 +312,7 @@ const [frozenBottomHeight, setFrozenBottomHeight] = useState(null)
           </p>
         </div>
 
-        <div className="border p-4 relative"
+        <div className="p-4 relative"
           ref={bottomSectionRef}
           style={{
             height: frozenBottomHeight !== null ? `${frozenBottomHeight}px` : "auto",

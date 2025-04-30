@@ -139,13 +139,13 @@ const PlacesPage = () => {
           </div>
 
           {/* Book & Interaction Section */}
-          <div className="border flex flex-1 items-center justify-between gap-6 px-6 pr-24 mt-6">
+          <div className="border flex flex-1 items-center justify-between gap-6 px-6 pr-24">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
-              <div className="flex flex-row justify-center px-1 h-full pb-8 ">
+              <div className="flex flex-row justify-center px-1 h-full pb-8 gap-4 ">
                 
                 {/* Left Page */}
                 {renderTemplate(
