@@ -68,8 +68,8 @@ export const Timeline = ({ data }) => {
       className="w-full bg-transparent font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="border max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10 justify-center pt-70">
-        <div className="border flex flex-col items-center mb-20">
+      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10 justify-center pt-70">
+        <div className="flex flex-col items-center mb-20">
           <h2 className="text-xl md:text-8xl mb-4 text-white font-imfell dark:text-white mb-70">
             Timeline of Mesa History
           </h2>
