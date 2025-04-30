@@ -99,7 +99,7 @@ const PlacesPage = () => {
         <div className="h-full flex flex-col flex-grow overflow-hidden"> 
           {/* Header */}
           <div 
-            className="w-[50%] h-[10%] flex items-center justify-center relative"
+            className="border w-[50%] h-[10%] flex items-center justify-center relative"
             style={{ 
               backgroundImage: `url(${header})`,
               backgroundSize: '100% 100%',
@@ -139,13 +139,13 @@ const PlacesPage = () => {
           </div>
 
           {/* Book & Interaction Section */}
-          <div className="flex flex-1 items-center justify-center gap-8 px-6 pr-24">
+          <div className="border flex flex-1 items-center justify-between gap-6 px-6 pr-24 mt-6">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
-              <div className="flex flex-row justify-between px-8 h-full pb-8">
+              <div className="flex flex-row justify-center px-1 h-full pb-8 ">
                 
                 {/* Left Page */}
                 {renderTemplate(
@@ -168,7 +168,7 @@ const PlacesPage = () => {
                 )}
 
                 {/* Previous and Next Buttons*/}
-                <div className="absolute bottom-10 left-6 text-xs">
+                <div className="absolute bottom-10 left-9 text-xs">
                   <img src="/prev_icon.png" onClick={goToPreviousChapter} className={`w-[30px] h-[30px] ${index === 0 ? 'opacity-50' : ''}`} ></img>
                 </div>
                 <div className="absolute bottom-10 right-6 text-xs">

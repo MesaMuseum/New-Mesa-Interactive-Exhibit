@@ -70,15 +70,7 @@ const ContentPage = () => {
 
     switch (templateNumber) {
       case "TRBL":
-        return <TemplateTRBL {...props} />
-      case "BC":
-        return <TemplateBC {...props} />
-      case "TC":
-        return <TemplateTC {...props} />
-      case "CC":
-        return <TemplateCC {...props} />
-      case "TLBR":
-        return <TemplateTLBR
+        return <TemplateTRBL
         key={title + topContent + bottomContent + topImage + bottomImage}
         title={title}
         topContent={topContent}
@@ -86,6 +78,36 @@ const ContentPage = () => {
         topImage={topImage}
         bottomImage={bottomImage}
       />
+      case "BC":
+        return <TemplateBC
+        key={title + topContent + bottomContent + topImage + bottomImage}
+        title={title}
+        topContent={topContent}
+        bottomContent={bottomContent}
+        topImage={topImage}
+        bottomImage={bottomImage}
+      />
+      case "TC":
+        return <TemplateTC {...props} />
+      case "CC":
+        return <TemplateCC
+        key={title + topContent + bottomContent + topImage + bottomImage}
+        title={title}
+        topContent={topContent}
+        bottomContent={bottomContent}
+        topImage={topImage}
+        bottomImage={bottomImage}
+      />
+      case "TLBR":
+/*         return <TemplateTLBR
+        key={title + topContent + bottomContent + topImage + bottomImage}
+        title={title}
+        topContent={topContent}
+        bottomContent={bottomContent}
+        topImage={topImage}
+        bottomImage={bottomImage}
+      /> */
+      return <TemplateTLBR {...props} />
       default:
         return <TemplateTC {...props} />
     }
@@ -99,9 +121,9 @@ const ContentPage = () => {
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div className="h-full flex flex-col flex-grow overflow-hidden"> 
-          {/* Header */}
-          <div 
-            className="w-[50%] h-[10%] flex items-center justify-center relative"
+                    {/* Header */}
+                    <div 
+            className="border w-[50%] h-[10%] flex items-center justify-center relative"
             style={{ 
               backgroundImage: `url(${header})`,
               backgroundSize: '100% 100%',
@@ -110,7 +132,7 @@ const ContentPage = () => {
             }}
           >
             <div className="w-full flex justify-between pb-4 px-24 pr-48">
-=              <Link 
+              <Link 
                 to="/people" 
                 className={`font-lovers text-black no-underline font-extrabold text-5xl scale-105 transition-transform relative`}
               >
@@ -140,13 +162,14 @@ const ContentPage = () => {
             </div>
           </div>
           
-=          <div className="flex flex-1 items-center justify-between gap-6 px-6 pr-24 leading-5">
+          {/* Book & Interaction Section */}
+=          <div className="border flex flex-1 items-center justify-between gap-6 px-6 pr-24">
             {/* Book Content */}
             <div className="relative w-[100%] h-[90%] flex flex-col bg-cover bg-center rounded-lg shadow-lg" 
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
-              <div className="flex flex-row justify-center gap-3 px-1 h-full pb-8 pl-3">
+              <div className="flex flex-row justify-center px-1 h-full pb-8 ">
                 {/* Left Page */}
                 {renderTemplate(
                   selectedChapter?.left_page_template_number || "TC",

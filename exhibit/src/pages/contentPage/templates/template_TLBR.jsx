@@ -32,7 +32,7 @@ const [frozenBottomHeight, setFrozenBottomHeight] = useState(null)
   const bottomImageRef = useRef(null)
 
   const maxContainerWidth = 672 // max-w-2xl = 672px
-  const targetMaxHeight = 600 // Target maximum height for the content container
+  const targetMaxHeight = 500 // Target maximum height for the content container
   const minImageSize = 80 // Minimum image dimension
   
   // Fade in content when component mounts
