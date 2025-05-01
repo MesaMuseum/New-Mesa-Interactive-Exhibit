@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const InactivityHandler = ({ timeoutMinutes = 1 }) => {
+const InactivityHandler = ({ timeoutMinutes = 5 }) => {
   const navigate = useNavigate();
   const timeoutId = useRef(null);
 

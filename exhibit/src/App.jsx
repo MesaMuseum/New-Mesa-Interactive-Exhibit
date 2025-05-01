@@ -26,7 +26,7 @@ function App() {
     <>
       <MusicPlayer />
       <Router>
-        <InactivityHandler timeoutMinutes={1} />
+        <InactivityHandler timeoutMinutes={5} />
         <Routes>
           <Route path="/" element={<StartingPage />} />
           <Route path="/room" element={<RoomPage />} />
