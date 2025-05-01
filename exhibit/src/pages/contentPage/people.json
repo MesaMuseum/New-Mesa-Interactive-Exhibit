@@ -12,9 +12,12 @@
     "right_page_bottom_image": "/peopleImages/charlesCrisom/Crismon Farm.JPG",
     "left_page_template_number": "TLBR",
     "right_page_template_number": "TRBL",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "What role did Charles Crismon play in Mesa’s early development?",
+    "options": ["He built the first home in Mesa",
+     "He was the first Mayor of Mesa",
+      "He helped lay out irrigation canals and started a water-power grist mill",
+       "He was the first post man in Mesa"],
+    "answer": "He helped lay out irrigation canals and started a water-power grist mill"
   },
   {
     "title_left_page": "Charles Robson",
@@ -29,9 +32,12 @@
     "right_page_bottom_image": "/peopleImages/charlesRobson/2009044019.JPG",
     "left_page_template_number": "CC",
     "right_page_template_number": "TC",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "What happened to Charles Robson’s health as a prison warden?",
+    "options": ["He was shot in the lung during a prison riot",
+     "He contracted tuberculosis",
+      "He fell off his horse and broke his leg",
+       "He injured his hand trying to subdue a prisoner"],
+    "answer": "He was shot in the lung during a prison riot"
   },
   {
     "title_left_page": "Daniel Jones",
@@ -46,9 +52,9 @@
     "right_page_bottom_image": "/peopleImages/DanielWebster/myLife.jpg",
     "left_page_template_number": "TLBR",
     "right_page_template_number": "TLBR",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "Which Utah Company leader was known as the Father of Lehi?",
+    "options": ["Daniel Webster Jones", "Charles Crismon", "Francis Pomeroy", "O.S. Stapley"],
+    "answer": "Daniel Webster Jones"
   },
   {
     "title_left_page": "Francis Pomeroy",
@@ -63,9 +69,9 @@
     "right_page_bottom_image": "",
     "left_page_template_number": "TC",
     "right_page_template_number": "CC",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "Which early Mesa Pioneer survived a shipwreck near the coast of Peru? ",
+    "options": ["Charles Crismon", "John LeSueur", "Francis Pomeroy", "Daniel Webster Jones"],
+    "answer": "Francis Pomeroy"
   },
   {
     "title_left_page": "Helen Dana",
@@ -80,9 +86,9 @@
     "right_page_bottom_image": "/peopleImages/HelenDana/19990110052.JPG",
     "left_page_template_number": "TLBR",
     "right_page_template_number": "TRBL",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "How many babies did Helen Dana help deliver?",
+    "options": ["1,000", "5,000", "10,000", "12,500"],
+    "answer": "12,500"
   },
   {
     "title_left_page": "Henry Rogers",
@@ -114,9 +120,12 @@
     "right_page_bottom_image": "/peopleImages/JohnTaylor/829233.JPG",
     "left_page_template_number": "TLBR",
     "right_page_template_number": "TRBL",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "Which Mesa founding father built the first adobe house?",
+    "options": ["Charles Crismon",
+     "George Sirrine",
+      "John Taylor LeSueur",
+       "Francis Pomeroy"],
+    "answer": "John Taylor LeSueur"
   },
   {
     "title_left_page": "Ramon Mendoza",
@@ -131,9 +140,12 @@
     "right_page_bottom_image": "/peopleImages/RamonMendoza/Dolores Mendoza.jpg",
     "left_page_template_number": "TLBR",
     "right_page_template_number": "TLBR",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "What was Ramon Mendoza, Sr. notable for?",
+    "options": ["He became Mesa’s first Hispanic Chief of Police",
+     "He was Mesa’s first Hispanic police officer",
+      "He hired Mesa’s first female officer in 1973",
+       "He built the first home in Mesa"],
+    "answer": "He was Mesa’s first Hispanic police officer"
   },
   {
     "title_left_page": "Veora Johnson",
@@ -148,9 +160,12 @@
     "right_page_bottom_image": "/peopleImages/VeoraJohnson/Veora Johnson.jpg",
     "left_page_template_number": "TLBR",
     "right_page_template_number": "TRBL",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "What made Veora Johnson a significant figure in Mesa’s history?",
+    "options": ["She was Mesa’s first African American principal",
+     "She was Mesa’s first African American nurse",
+      "She opened up a home for unwed mothers",
+       "She opened up the first clothing store in Mesa "],
+    "answer": "She was Mesa’s first African American principal"
   },
   {
     "title_left_page": "“Zedo” Ishikawa",
@@ -165,8 +180,8 @@
     "right_page_bottom_image": "/peopleImages/ZedoIshikawa/1931.jpg",
     "left_page_template_number": "TLBR",
     "right_page_template_number": "TRBL",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "What were Zedo Ishikawa’s final words to inspire Mesa High School’s rallying cry?",
+    "options": ["Leave it on the Field", "Champions Play Here", "Carry On", "Win One for Mesa"],
+    "answer": "Carry On"
   }
 ]

@@ -232,11 +232,11 @@ function MenuPage() {
       <div
         style={{
           position: 'absolute',
-          bottom: '80px',      // Raised up from 20px to 80px
+          bottom: '100px',      // Raised up from 20px to 80px
           width: '100%',
           display: 'flex',
           justifyContent: 'center', // center them
-          gap: '210px',              // 20px gap between labels; adjust as needed
+          gap: '270px',              // 20px gap between labels; adjust as needed
           zIndex: 0,              // ensure they're on top
           color: 'white',
           fontSize: '1.5rem',
