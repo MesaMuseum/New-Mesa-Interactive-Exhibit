@@ -68,12 +68,12 @@ export const Timeline = ({ data }) => {
       className="w-full bg-transparent font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <div className="flex flex-col items-center mb-10">
-          <h2 className="text-lg md:text-4xl mb-4 text-black font-imfell dark:text-white max-w-6xl">
+      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10 justify-center pt-70">
+        <div className="flex flex-col items-center mb-20">
+          <h2 className="text-xl md:text-8xl mb-4 text-white font-imfell dark:text-white mb-70">
             Timeline of Mesa History
           </h2>
-          <p className="text-neutral-700 dark:text-neutral-300 text-sm font-imfell md:text-base max-w-sm">
+          <p className="text-neutral-200 dark:text-neutral-300 text-sm font-imfell md:text-base max-w-sm">
             Scroll Down to Learn More
           </p>
           <ScrollIcon />
@@ -92,7 +92,7 @@ export const Timeline = ({ data }) => {
               <motion.h3
                 initial={{ opacity: 1 }}
                 style={{ opacity: opacityTransform }}
-                className="hidden md:block text-xl md:pl-20 md:text-5xl font-lovers text-white"
+                className="hidden md:block text-xl md:pl-20 md:text-8xl font-lovers text-white"
               >
                 {item.title}
               </motion.h3>

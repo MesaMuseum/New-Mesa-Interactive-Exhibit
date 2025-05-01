@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import { TextureLoader } from 'three';
@@ -23,6 +23,7 @@ function BookModel({
   const { scene } = useGLTF(gltfPath);
   const bookRef = useRef();
   const [isAnimating, setIsAnimating] = useState(false);
+  const [bringToFront, setBringToFront] = useState(false);
 
   // Final target values: move toward center and scale up.
   const finalPosition = new THREE.Vector3(0, 0, 10);
@@ -34,15 +35,45 @@ function BookModel({
   // Define a final camera position for the zoom effect.
   const finalCameraPosition = new THREE.Vector3(0, 0, 2);
 
+  // ← Step 1: target rotation to tilt X by +0.2 rad
+  const finalRotation = new THREE.Euler(
+    initialRotation[0] + 1, // tweak “0.2” 
+    initialRotation[1],
+    initialRotation[2]
+  );
+
+  // ← NEW: when bringToFront flips, bump renderOrder & disable depth
+  useEffect(() => {
+    if (bringToFront && bookRef.current) {
+      bookRef.current.renderOrder = 999; 
+      bookRef.current.traverse((obj) => {
+        if (obj.material) {
+          obj.material.depthTest = false;
+          obj.material.depthWrite = false;
+          // if you use transparency, ensure transparent = true:
+          obj.material.transparent = true;
+        }
+      });
+    }
+  }, [bringToFront]);
+
+  const handleClick = (e) => {
+   // 1) mark for front
+   setBringToFront(true);
+    // 2) start your animation
+    setIsAnimating(true);
+  };
+
 
   useFrame((state, delta) => {
     if (isAnimating && bookRef.current) {
       // Animate book position toward the center.
       bookRef.current.position.lerp(finalPosition, delta * 2);
-      // Animate book rotation (if needed, but in your case rotation stays the same)
-      // bookRef.current.rotation.x = THREE.MathUtils.lerp(bookRef.current.rotation.x, finalRotation[0], delta * 2);
-      // bookRef.current.rotation.y = THREE.MathUtils.lerp(bookRef.current.rotation.y, finalRotation[1], delta * 2);
-      // bookRef.current.rotation.z = THREE.MathUtils.lerp(bookRef.current.rotation.z, finalRotation[2], delta * 2);
+
+      //Animate book rotation 
+      bookRef.current.rotation.x = THREE.MathUtils.lerp(bookRef.current.rotation.x, finalRotation.x, delta * 2);
+      bookRef.current.rotation.y = THREE.MathUtils.lerp(bookRef.current.rotation.y, finalRotation.y, delta * 2);
+      bookRef.current.rotation.z = THREE.MathUtils.lerp(bookRef.current.rotation.z, finalRotation.z, delta * 2);
       
       // Animate book scale
       bookRef.current.scale.lerp(finalScale, delta * 2);
@@ -59,6 +90,7 @@ function BookModel({
       if (bookRef.current.position.distanceTo(finalPosition) < 0.1) {
         // Clamp the values exactly.
         bookRef.current.position.copy(finalPosition);
+        bookRef.current.rotation.copy(finalRotation);
         bookRef.current.scale.copy(finalScale);
         if (cameraRef && cameraRef.current) {
           cameraRef.current.position.copy(finalCameraPosition);
@@ -75,9 +107,9 @@ function BookModel({
   });
   
 
-  const handleClick = () => {
-    setIsAnimating(true);
-  };
+  // const handleClick = () => {
+  //   setIsAnimating(true);
+  // };
 
   return (
     <primitive
@@ -87,11 +119,13 @@ function BookModel({
       scale={new THREE.Vector3(...scaleVal)}
       position={initialPosition}
       rotation={initialRotation} // this remains unchanged
+      renderOrder={bringToFront ? 999 : 0}
       onClick={handleClick}
       className="cursor-pointer"
     />
   );
 }
+
 
 
 // --- MenuPage Component ---
@@ -141,10 +175,10 @@ function MenuPage() {
       {/* 3D Canvas with Book Models */}
       <div style={{
           position: 'fixed',
-          top: '30vh', // 30% down from the top
+          top: '35vh', // 30% down from the top
           left: 0,
           width: '100vw',
-          height: '70vh', // the remaining 70%
+          height: '75vh', // the remaining 70%
           zIndex: 1 // adjust z-index if necessary to layer behind or in front of other content
         }}>
         <Canvas
@@ -162,23 +196,23 @@ function MenuPage() {
           <BookModel
             gltfPath="/compressed_book1.glb"
             onClick={() => handleBookClick('/people')}
-            initialPosition={[-200, -30, 0]}
-            initialRotation={[-17, 0, 0]}
-            scaleVal={[1, 0.1, 1]}
+            initialPosition={[-150, -10, 65]}
+            initialRotation={[-5.9, 0, 0]}
+            scaleVal={[1, 0.7, 1]}
           />
           <BookModel
             gltfPath="/compressed_book2.glb"
             onClick={() => handleBookClick('/places')}
-            initialPosition={[0, -30, 0]}
-            initialRotation={[-17, 0, 0]}
-            scaleVal={[1, 0.1, 1]}
+            initialPosition={[0, -10, 70]}
+            initialRotation={[-5.9, 0, 0]}
+            scaleVal={[1, 0.7, 1]}
           />
           <BookModel
             gltfPath="/compressed_book3.glb"
             onClick={() => handleBookClick('/timeline')}
-            initialPosition={[200, -30, 0]}
-            initialRotation={[-17, 0, 0]}
-            scaleVal={[1, 0.1, 1]}
+            initialPosition={[150, -10, 70]}
+            initialRotation={[-5.9, 0, 0]}
+            scaleVal={[1, 0.7, 1]}
           />
 
         </Canvas>
@@ -203,7 +237,7 @@ function MenuPage() {
           display: 'flex',
           justifyContent: 'center', // center them
           gap: '210px',              // 20px gap between labels; adjust as needed
-          zIndex: 100,              // ensure they're on top
+          zIndex: 0,              // ensure they're on top
           color: 'white',
           fontSize: '1.5rem',
           textShadow: '1px 1px 3px black'
@@ -228,6 +262,7 @@ function MenuPage() {
     </div>
   );
 }
+
 
 export default MenuPage;
 
