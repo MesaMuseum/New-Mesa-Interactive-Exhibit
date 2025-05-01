@@ -17,7 +17,7 @@ import Carousel_9 from "./pages/MenuPage/CarouselContent/carousel_9";
 import Carousel_10 from "./pages/MenuPage/CarouselContent/carousel_10";
 import Carousel_11 from "./pages/MenuPage/CarouselContent/carousel_11";
 import Carousel_12 from "./pages/MenuPage/CarouselContent/carousel_12";
-
+import InactivityHandler from './counter';
 import TimelinePage from "./pages/contentPage/timelinePage";
 import './index.css';
 
@@ -26,6 +26,7 @@ function App() {
     <>
       <MusicPlayer />
       <Router>
+        <InactivityHandler timeoutMinutes={1} />
         <Routes>
           <Route path="/" element={<StartingPage />} />
           <Route path="/room" element={<RoomPage />} />
