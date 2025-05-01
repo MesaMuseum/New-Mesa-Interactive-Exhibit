@@ -73,7 +73,7 @@ export const Timeline = ({ data }) => {
           <h2 className="text-xl md:text-8xl mb-4 text-white font-imfell dark:text-white mb-70">
             Timeline of Mesa History
           </h2>
-          <p className="text-neutral-200 dark:text-neutral-300 text-sm font-imfell md:text-base max-w-sm">
+          <p className="text-neutral-200 dark:text-neutral-300 text-2xl font-imfell max-w-lg">
             Scroll Down to Learn More
           </p>
           <ScrollIcon />

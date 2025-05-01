@@ -162,8 +162,8 @@ function MenuPage() {
       <Carousel/>
 
       {/* Title / Subheading */}
-      <div className="text-center mb-4">
-        <p className="text-xl">
+      <div className="text-center mb-4 text-shadow-lg/40 text-shadow-white pt-10">
+        <p className="text-3xl">
           Select a 360° experience above to explore a Mesa historical site
           <br />
           or 
@@ -233,15 +233,12 @@ function MenuPage() {
         style={{
           position: 'absolute',
           bottom: '80px',      // Raised up from 20px to 80px
-          width: '100%',
+          width: '60%',
           display: 'flex',
-          justifyContent: 'center', // center them
-          gap: '210px',              // 20px gap between labels; adjust as needed
           zIndex: 0,              // ensure they're on top
           color: 'white',
-          fontSize: '1.5rem',
-          textShadow: '1px 1px 3px black'
         }}
+        className="justify-between pl-[5%] pr-[5%] text-4xl text-shadow-lg/40 text-shadow-white"
       >
         <span>People</span>
         <span>Places</span>

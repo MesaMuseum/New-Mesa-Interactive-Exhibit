@@ -14,7 +14,7 @@ function Carousel() {
     slidesToScroll: 1,
   };
   return (
-    <div className="bg-white text-black text-xl w-1/2 mx-auto my-5 h-2/5" >
+    <div className="bg-white text-black text-xl w-1/2 mx-auto my-5 h-2/5 mt-15" >
     <Slider {...settings } className="my-custom-slider">
       <div className="h-full">
         <a href="/carousel_1">
