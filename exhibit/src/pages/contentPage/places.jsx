@@ -145,7 +145,7 @@ const PlacesPage = () => {
               style={{ backgroundImage: `url(${bookBackground})` }}>
               
               {/* Book Pages Container */}
-              <div className="flex flex-row justify-center px-1 h-full pb-8 gap-4 ">
+              <div className="flex flex-row justify-center px-1 h-full pb-8 gap-4">
                 
                 {/* Left Page */}
                 {renderTemplate(
