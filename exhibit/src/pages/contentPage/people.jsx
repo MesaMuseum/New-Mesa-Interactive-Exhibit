@@ -202,7 +202,7 @@ const ContentPage = () => {
                 )}
                 
                 {/* Previous and Next Buttons*/}
-                <div className="border absolute bottom-10 left-9 text-xs">
+                <div className="absolute bottom-10 left-9 text-xs">
                   <img src="/prev_icon.png" onClick={goToPreviousChapter} className={`w-[30px] h-[30px] ${index === 0 ? 'opacity-50' : ''}`} ></img>
                 </div>
                 <div className="absolute bottom-10 right-6 text-xs">
