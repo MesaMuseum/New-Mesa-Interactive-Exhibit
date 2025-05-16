@@ -21,10 +21,12 @@ const PeopleMedia = ({ selectedChapter }) => {
   return (
     <div className="w-[45%] h-[90%] flex flex-col items-center shadow-lg rounded-lg p-4">
       {/* Video Section */}
-      <video className="w-full h-auto rounded-lg shadow-md" controls>
-        <source src="/temp.mp4" type="video/mp4" />
-        <p className="font-imfell">Your browser does not support the video tag.</p>
-      </video>
+      {selectedChapter?.video ? (
+        <video className="w-full h-auto rounded-lg shadow-md" controls>
+          <source src={selectedChapter.video} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : null}
 
       {/* Trivia Question Section (Only Shows If the Chapter Has a Question) */}
       {hasQuestion ? (
