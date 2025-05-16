@@ -1,7 +1,7 @@
 [
   {
-    "title": "1878",
-    "content": "The first Mesa Canal Company was organized, marking the beginning of modern irrigation in Mesa. This vital infrastructure project laid the foundation for agricultural development in the region.",
+    "title": "1877",
+    "content": "“Utah Company” arrives and settles Lehi - Led by Daniel Webster Jones, a group of Mormon pioneers known as the “Utah Company” arrived in the Salt River Valley in 1877 and established the settlement of Lehi. Jones and his party chose the location for its access to water and began rebuilding ancient Hohokam canals to irrigate crops. Their efforts marked the first successful Anglo-American settlement in the area and laid the groundwork for the development of Mesa.",
     "images": [
       "/contentPage/timeline/1878_canal.jpg",
       "/contentPage/timeline/1878_workers.jpg",
@@ -9,16 +9,34 @@
     ]
   },
   {
-    "title": "1883",
-    "content": "Mesa City was officially incorporated, becoming the second incorporated town in the Salt River Valley. The city established its first local government and began developing public services.",
+    "title": "1878",
+    "content": "“Mesa Company” arrives and settles Mesa - In early 1878, a second group of Mormon pioneers, known as the “Mesa Company,” arrived from Utah to settle just south of the Lehi settlement. Unlike the Utah Company, the Mesa Company was more organized and better funded, led by experienced colonists including Francis Martin Pomeroy. They surveyed the land, began building homes, and constructed the Mesa Canal by reviving segments of ancient Hohokam irrigation systems. This marked the official founding of Mesa, Arizona.",
+    "images": [
+      "/contentPage/timeline/1878_canal.jpg",
+      "/contentPage/timeline/1878_workers.jpg",
+      "/contentPage/timeline/1878_construction.jpg"
+    ]
+  },
+   {
+    "title": "1878",
+    "content": "Mesa Canal Project - The Hohokam people lived in the Salt River Valley for hundreds of years, building a canal system to water their fields. They left the valley in the 1400s, but their canals remained. When colonists arrived in February 1878, they used an abandoned Hohokam canal for part of their first irrigation project, the Mesa Canal. Shareholders in the Mesa Canal Company were paid $1.50 per day to work on the project, which was completed in October 1878.",
+    "images": [
+      "/contentPage/timeline/1878_canal.jpg",
+      "/contentPage/timeline/1878_workers.jpg",
+      "/contentPage/timeline/1878_construction.jpg"
+    ]
+  },
+  {
+    "title": "1879",
+    "content": "Creation of Salt River Reservation - Around 1870, many Pima and Maricopa Indians left their Gila River reservation and settled on the Salt River. In 1879, President Rutherford Hayes established a new reservation for them that covered much of the Salt River Valley, closing large tracts of land to settlement. After protests from non-Indian residents, Hayes changed his mind and created a smaller reservation, which became known as the Salt River Pima-Maricopa Indian Community.",
     "images": [
       "/contentPage/timeline/1883_cityHall.jpg",
       "/contentPage/timeline/1883_downtown.jpg"
     ]
   },
   {
-    "title": "1895",
-    "content": "The Mesa Free Press, the city's first newspaper, began publication. This marked an important milestone in Mesa's growth as a community and helped establish better communication among residents.",
+    "title": "1881",
+    "content": "Mesa's first post office - initially named Hayden's Ferry, was established in 1881 and operated by Fannie MacDonald. The name later changed to Zenos in 1886, and finally to Mesa City in 1889 by the Post Office Department.",
     "images": [
       "/contentPage/timeline/1895_newspaper.jpg",
       "/contentPage/timeline/1895_pressOffice.jpg"
