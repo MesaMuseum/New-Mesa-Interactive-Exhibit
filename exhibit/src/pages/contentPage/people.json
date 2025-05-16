@@ -17,7 +17,8 @@
      "He was the first Mayor of Mesa",
       "He helped lay out irrigation canals and started a water-power grist mill",
        "He was the first post man in Mesa"],
-    "answer": "He helped lay out irrigation canals and started a water-power grist mill"
+    "answer": "He helped lay out irrigation canals and started a water-power grist mill",
+    "video": "/temp.mp4"
   },
   {
     "title_left_page": "Charles Robson",
@@ -37,8 +38,10 @@
      "He contracted tuberculosis",
       "He fell off his horse and broke his leg",
        "He injured his hand trying to subdue a prisoner"],
-    "answer": "He was shot in the lung during a prison riot"
+    "answer": "He was shot in the lung during a prison riot",
+    "video": ""
   },
+
   {
     "title_left_page": "Daniel Jones",
     "title_right_page": "Daniel Jones",
@@ -54,7 +57,8 @@
     "right_page_template_number": "TLBR",
     "question": "Which Utah Company leader was known as the Father of Lehi?",
     "options": ["Daniel Webster Jones", "Charles Crismon", "Francis Pomeroy", "O.S. Stapley"],
-    "answer": "Daniel Webster Jones"
+    "answer": "Daniel Webster Jones",
+    "video": "/temp2.mp4"
   },
   {
     "title_left_page": "Francis Pomeroy",
