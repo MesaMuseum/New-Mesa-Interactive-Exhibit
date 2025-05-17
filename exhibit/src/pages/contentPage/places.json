@@ -99,7 +99,8 @@
     "right_page_template_number": "TLBR",
     "question": "",
     "options": [],
-    "answer": ""
+    "answer": "",
+    "video": "/placesImages/Stapley/OSStapley.mp4"
   },
   {
     "title_left_page": "O.S. Stapley",
@@ -116,7 +117,8 @@
     "right_page_template_number": "TLBR",
     "question": "",
     "options": [],
-    "answer": ""
+    "answer": "",
+    "video": "/placesImages/Stapley/OSStapley.mp4"
   },
   {
     "title_left_page": "Railroad Depot",
@@ -133,7 +135,8 @@
     "right_page_template_number": "TLBR",
     "question": "",
     "options": [],
-    "answer": ""
+    "answer": "",
+    "video": "/placesImages/Railroad/RailroadDepot.mp4"
   },
   {
     "title_left_page": "Sunkist",
@@ -167,6 +170,7 @@
     "right_page_template_number": "TLBR",
     "question": "",
     "options": [],
-    "answer": ""
+    "answer": "",
+    "video": "placesImages/TheNile/NileTheater.mp4"
   }
 ]
