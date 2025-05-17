@@ -1,0 +1,6 @@
+# Netlify configuration for SPA
+# Redirect all routes to index.html for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

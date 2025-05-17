@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import MusicPlayer from './components/MusicPlayer';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import StartingPage from "./pages/StartingPage/StartingPage";
 import RoomPage from "./pages/RoomPage/RoomPage"; 
 import PeoplePage from "./pages/contentPage/people";
@@ -22,6 +23,18 @@ import TimelinePage from "./pages/contentPage/timelinePage";
 import './index.css';
 
 function App() {
+  useEffect(() => {
+    // Handle redirects from 404.html
+    const redirect = sessionStorage.redirect;
+    if (redirect) {
+      // Clear the redirect from sessionStorage
+      delete sessionStorage.redirect;
+      // Parse the redirect URL to get the path
+      const url = new URL(redirect);
+      window.history.replaceState(null, null, url.pathname + url.search);
+    }
+  }, []);
+
   return (
     <>
       <MusicPlayer />
@@ -46,6 +59,8 @@ function App() {
           <Route path="/carousel_10" element={<Carousel_10 />} />
           <Route path="/carousel_11" element={<Carousel_11 />} />
           <Route path="/carousel_12" element={<Carousel_12 />} />
+          {/* Catch all route - redirect to home if page not found */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </>
