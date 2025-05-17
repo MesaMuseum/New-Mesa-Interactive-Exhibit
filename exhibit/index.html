@@ -3,13 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Mesa Historical Museum Interactive Exhibit" />
     <title>Mesa Historical Museum</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="./src/index.css" rel="stylesheet">
+    <!-- Handle SPA routing for deployed app -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages or static hosts
+      // Works on Vercel, Netlify, GitHub Pages, etc.
+      (function(l) {
+        if (navigator.userAgent.indexOf('MSIE') !== -1 || 
+            navigator.appVersion.indexOf('Trident/') > -1) {
+          // IE10+ special cases
+          return;
+        }
+        
+        var origin = window.location.origin;
+        var path = window.location.pathname.split('/');
+        var redirectedFrom = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        
+        if (redirectedFrom && redirectedFrom !== l.href) {
+          history.replaceState(null, null, redirectedFrom);
+        }
+      }(window.location))
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Fallback for 404 pages on static hosting services -->
+    <script>
+      // Redirect 404s to the main app where React Router can handle them
+      if (window.location.pathname !== '/' && !window.location.pathname.includes('.')) {
+        sessionStorage.redirect = window.location.href;
+      }
+    </script>
   </body>
 </html>
