@@ -107,9 +107,9 @@
     "right_page_bottom_image": "/peopleImages/HenryClayRogers/2019012017 - spirit level Rogers used.JPG",
     "left_page_template_number": "TC",
     "right_page_template_number": "TLBR",
-    "question": "What is the capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answer": "Paris"
+    "question": "What is the name of the townsite laid out by Henry Rogers?",
+    "options": ["Stringtown", "Mesa", "Lehi", "Provo"],
+    "answer": "Mesa"
   },
   {
     "title_left_page": "John LeSueur",
