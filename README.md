@@ -1,7 +1,5 @@
 # New-Mesa-Interactive-Exhibit
 
-Clone repository: git clone ____
+Created for Mesa Historical Museum
 
-Install dependencies:
-npm install
-npm install @react-three/fiber @react-three/drei react react-dom three
+Deployed at: [https://mesa-interactive-exhibit.vercel.app/](https://mesa-interactive-exhibit.vercel.app/)
