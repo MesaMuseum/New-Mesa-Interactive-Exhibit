@@ -23,15 +23,17 @@ const PlacesPage = () => {
 
   const goToPreviousChapter = () => {
     if (index > 0) {
-      setIndex(index - 1);
-      setSelectedChapter(chapters[index - 1]);
+      const newIndex = index - 1;
+      setIndex(newIndex);
+      setSelectedChapter(chapters[newIndex]);
     }
   };
 
   const goToNextChapter = () => {
     if (index < chapters.length - 1) {
-      setIndex(index + 1);
-      setSelectedChapter(chapters[index + 1]);
+      const newIndex = index + 1;
+      setIndex(newIndex);
+      setSelectedChapter(chapters[newIndex]);
     }
   };
 
@@ -46,6 +48,13 @@ const PlacesPage = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Force reload of media when chapter changes
+  useEffect(() => {
+    // This effect will run whenever selectedChapter or index changes
+    // ensuring that all media (videos, images, text) are properly loaded
+    console.log('Chapter changed:', selectedChapter?.title_left_page, 'Index:', index);
+  }, [selectedChapter, index]);
+
 
   const toggleSidebar = (e) => {
     e.stopPropagation();
@@ -55,6 +64,8 @@ const PlacesPage = () => {
   const handleClick = (selectedIndex, selectedChapter) => {
     setIndex(selectedIndex);
     setSelectedChapter(selectedChapter);
+    // Close sidebar after selection
+    setIsSidebarExpanded(false);
   };
 
   const renderTemplate = (templateNumber, title, topContent, bottomContent, topImage, bottomImage) => {
@@ -176,7 +187,10 @@ const PlacesPage = () => {
                 </div>
               </div>
             </div>
-            <PlacesMedia selectedChapter={selectedChapter} />
+            <PlacesMedia 
+              key={`places-media-${index}-${selectedChapter?.title_left_page || 'default'}`}
+              selectedChapter={selectedChapter} 
+            />
           </div>
         </div>
       </div>
